@@ -109,7 +109,7 @@ nav {
 
 #skills {
   background-color: #ffffff;
-  height: 80vh;
+  height: 100vh;
   color: #171c28;
 }
 
@@ -180,4 +180,66 @@ nav {
 
 .center {
   text-align: center;
+}
+
+#portfolio {
+  background-image: url("../img/porfolio-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  padding: 100px 0;
+}
+
+#portfolio h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.yellow {
+  color: yellow;
+  font-weight: bold;
+}
+
+.portfolio-tag {
+  color: white;
+  margin: 1rem 0;
+}
+
+.portfolio-flex {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  width: 85%;
+  margin: 3rem auto 0 auto;
+  align-items: stretch;
+}
+
+.portfolio-flex > * {
+  border-radius: 7px;
+  flex: 1;
+  background-color: #171c28;
+  padding: 25px 20px;
+}
+
+.portfolio-flex h3 {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.portfolio-flex p {
+  margin-bottom: 2rem;
+  color: #bebbbb;
+  line-height: 146%;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.portfolio-flex a {
+  display: block;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+  color: yellow;
 }
