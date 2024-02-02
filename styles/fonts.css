@@ -1,0 +1,32 @@
+.nav-items ul {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.center-col h1 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.center-col p {
+  font-family: "Montserrat", sans-serif;
+}
+
+.button button {
+  font-family: "Montserrat", sans-serif;
+}
+
+#skills {
+  font-family: "Montserrat", sans-serif;
+}
+
+#portfolio {
+  font-family: "Montserrat", sans-serif;
+}
+
+#about {
+  font-family: "Montserrat", sans-serif;
+}
+
+#contact,
+footer {
+  font-family: "Montserrat", sans-serif;
+}
