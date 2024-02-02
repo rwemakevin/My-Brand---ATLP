@@ -243,3 +243,152 @@ nav {
   text-decoration: underline;
   color: yellow;
 }
+
+#about {
+  background-color: #f9f9f9;
+
+  padding: 70px;
+}
+
+.about-container {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.about-left {
+  border-right: 3px solid rgba(218, 213, 248, 0.7);
+}
+
+.about-left,
+.about-right {
+  flex: 1;
+  padding: 90px;
+}
+
+.button-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.button-arrow {
+  padding: 5px 40px;
+  border: 1px solid #171c28;
+  background-color: white;
+  cursor: pointer;
+}
+
+.about-container h1 {
+  color: #171c28;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.about-container h1 {
+  color: #171c28;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.about-left > p,
+.about-right > p {
+  margin-bottom: 2.5rem;
+  font-size: 1.2rem;
+  line-height: 146%;
+}
+
+button p {
+  font-weight: bold;
+}
+
+.contact-flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.contact-left,
+.contact-right {
+  flex: 1;
+
+  padding: 20px;
+}
+
+.contact-left h1 {
+  font-weight: bold;
+  color: white;
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+}
+
+.contact-left > p {
+  color: white;
+  font-size: 1.2rem;
+  line-height: 146%;
+  margin-bottom: 2rem;
+}
+
+.contact-details {
+  padding: 30px;
+}
+
+.detail {
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.detail p {
+  color: white;
+  font-size: 1rem;
+  line-height: 146%;
+}
+
+.form-container {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  height: 100%;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 5px;
+  border: 1px solid #bebbbb;
+  background-color: white;
+}
+
+.input-item {
+  margin-bottom: 0.7rem;
+}
+
+.input-item p {
+  margin-bottom: 5px;
+}
+
+.input-item button {
+  padding: 13px 20px;
+  width: 100%;
+  background-color: #171c28;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #1c2834;
+  text-align: center;
+  color: #bebbbb;
+  padding: 15px 0;
+}
