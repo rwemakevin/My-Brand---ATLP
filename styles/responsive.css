@@ -119,6 +119,7 @@
     padding: 1.5rem 0;
   }
 
+  /* for portfolio */
   #portfolio {
     height: auto;
     padding: 40px 0;
@@ -142,6 +143,7 @@
     font-size: 1rem;
   }
 
+  /* for about */
   #about {
     padding: 10px 10px 30px 10px;
     height: auto;
@@ -193,7 +195,7 @@
     text-align: center;
     padding: 0;
     border: none;
-    background-color: #171c28;
+    background-color: #1f53b9;
     padding: 1rem 0;
     border-radius: 7px;
     color: white;
@@ -269,6 +271,261 @@
 
 /* screen 2 */
 @media screen and (min-width: 376px) and (max-width: 428px) {
+  /* for nav */
+  .container {
+    width: 100%;
+  }
+  * {
+    box-sizing: border-box;
+  }
+
+  nav {
+    padding: 0;
+    padding: 1rem 0;
+  }
+
+  .branding {
+    display: none;
+  }
+
+  .navbar {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-items ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .nav-items li {
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+
+  /* for hero */
+  #hero {
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 30px 10px;
+  }
+
+  .hero-left {
+    display: block;
+
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+  }
+
+  .center-col h1,
+  .center-col p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .center-col h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .center-col p {
+    font-size: 1rem;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .hero-img img {
+    width: 80%;
+    height: auto;
+  }
+
+  /* for skills */
+  #skills {
+    height: auto;
+    padding: 10px 5px 30px 5px;
+  }
+
+  .skills-flex {
+    display: block;
+    text-align: center;
+  }
+
+  .skills-flex-left {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: 25px 10px;
+  }
+
+  .skills-flex-left h1,
+  .skills-flex-left p {
+    padding: 0;
+  }
+
+  .skills-flex-left p {
+    font-size: 1rem;
+  }
+
+  .skills-flex-left h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+
+  .item {
+    padding: 1.5rem 0;
+  }
+
+  /* for portfolio */
+  #portfolio {
+    height: auto;
+    padding: 30px 0;
+  }
+
+  #portfolio h1 {
+    font-size: 1.5rem;
+  }
+
+  .portfolio-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .portfolio-flex > div {
+    text-align: center;
+  }
+
+  .portfolio-flex p {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  /* for about */
+  #about {
+    height: auto;
+    padding: 10px;
+  }
+
+  .about-container {
+    display: block;
+  }
+
+  .about-container > div {
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 20px 0 40px 0;
+  }
+
+  .about-left,
+  .about-right {
+    display: block;
+    text-align: center;
+
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .about-right h1,
+  .about-left h1 {
+    font-size: 1.2rem;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .about-left p,
+  .about-right p {
+    font-size: 1rem;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+  }
+
+  .button-arrow {
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+    border: none;
+    background-color: #1f53b9;
+    padding: 1rem 0;
+    border-radius: 7px;
+    color: white;
+  }
+
+  .button-arrow img {
+    display: none;
+  }
+
+  .button-arrow p {
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+  }
+
+  /* for contact */
+  #contact {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .contact-flex {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .contact-left h1 {
+    font-weight: bold;
+
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-left > p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-details {
+    padding: 5px 0;
+    margin-top: 1.5rem;
+  }
+
+  .detail {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .input-item input {
+    padding: 10px;
+  }
+
+  .detail img {
+    width: auto;
+  }
+
+  .input-item p {
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  /* for footer */
+  footer p {
+    font-size: 0.7rem;
+  }
 }
 
 /* screen 3 */
