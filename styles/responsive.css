@@ -769,4 +769,50 @@
 
 /* screen 4 */
 @media screen and (min-width: 835px) and (max-width: 1200px) {
+  .container {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  /* for nav */
+  .nav-items li {
+    font-size: 1rem;
+  }
+
+  /* for hero */
+  .center-col h1 {
+    font-size: 2rem;
+  }
+
+  .center-col > p {
+    font-size: 1.3rem;
+  }
+
+  .social-icons {
+    margin: 0 auto;
+    display: flex;
+
+    gap: 2.5rem;
+    justify-content: flex-start;
+  }
+
+  /* for portfolio */
+
+  .portfolio-flex {
+    height: auto;
+  }
+  .portfolio-flex {
+    width: 100%;
+  }
+
+  /* for about */
+  #about {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .about-left,
+  .about-right {
+    padding: 30px;
+  }
 }
