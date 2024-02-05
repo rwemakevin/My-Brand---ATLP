@@ -14,6 +14,12 @@ body {
   background-color: #171c28;
 }
 
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 main {
   height: 100vh;
   display: flex;
@@ -89,4 +95,59 @@ main {
   color: white;
   font-weight: bold;
   margin-top: 30px;
+}
+
+#blog-section {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+}
+
+#blog-section > div {
+  flex: 49%;
+  border: 1px solid #d9d9d9;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+p.date {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #171c28;
+  margin-bottom: 1.5rem;
+}
+
+p.title {
+  color: #171c28;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+p.description {
+  color: #171c28;
+  margin-bottom: 1.5rem;
+  line-height: 146%;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+#blog-section button {
+  text-align: center;
+  border: 2px solid #171c28;
+  background-color: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+#blog-section button:hover {
+  background-color: #171c28;
+  color: white;
+
+  transition: 0.3s ease-in all;
 }

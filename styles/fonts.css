@@ -43,3 +43,19 @@ footer {
 .learn-more {
   font-family: "Montserrat", sans-serif;
 }
+
+p.date {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+p.title {
+  font-family: "Monda", sans-serif;
+}
+
+p.description {
+  font-family: "Monda", sans-serif;
+}
+
+#blog-section div > button {
+  font-family: "Montserrat", sans-serif;
+}
