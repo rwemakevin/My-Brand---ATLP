@@ -103,7 +103,7 @@ main {
   background-color: #ffffff;
   display: flex;
   flex-wrap: wrap;
-
+  margin-bottom: 50px;
   justify-content: space-between;
 }
 
@@ -150,4 +150,11 @@ p.description {
   color: white;
 
   transition: 0.3s ease-in all;
+}
+
+footer {
+  text-align: center;
+  background-color: #1c2834;
+  color: #bebbbb;
+  padding: 20px 0;
 }
