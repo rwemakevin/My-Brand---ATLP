@@ -1,0 +1,92 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: #171c28;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.menu {
+  flex: 25%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px 0 0;
+}
+
+.menu > div {
+  padding: 2px;
+
+  width: 70%;
+}
+
+.welcome {
+  flex: 75%;
+  background-image: url("../img/porfolio-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 0 20px;
+}
+
+.welcome > div {
+  width: 75%;
+}
+.item {
+  border-bottom: 2px solid #bebbbb;
+  margin: 40px 0;
+  padding: 0 0 5px 0;
+  text-align: right;
+}
+
+.item a {
+  text-decoration: none;
+  color: #bebbbb;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.welcome h1 {
+  font-size: 3rem;
+  color: #fcfcfc;
+  margin-bottom: 1.5rem;
+}
+
+.welcome div p {
+  font-size: 1.2rem;
+  line-height: 146%;
+  color: #bebbbb;
+  margin-bottom: 1.5rem;
+}
+
+.learn-more {
+  background: none;
+  width: 251px;
+  padding: 15px;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 32px;
+  color: white;
+  font-weight: bold;
+  margin-top: 30px;
+}
