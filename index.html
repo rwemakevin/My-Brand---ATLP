@@ -23,12 +23,12 @@
         </div>
         <div class="nav-items">
           <ul>
-            <li>HOME</li>
-            <li>ABOUT</li>
-            <li>PORTFOLIO</li>
-            <li>SKILLS</li>
-            <li>BLOG</li>
-            <li>CONTACT</li>
+            <a href="/index.html"><li>HOME</li></a>
+            <a href="#about"><li>ABOUT</li></a>
+            <a href="#portfolio"><li>PORTFOLIO</li></a>
+            <a href="#skills"><li>SKILLS</li></a>
+            <a href="./blog.html"><li>BLOG</li></a>
+            <a href="#contact"><li>CONTACT</li></a>
           </ul>
         </div>
       </div>
@@ -50,8 +50,15 @@
             <img src="./img/facebook.png" alt="" />
           </div>
           <div class="button">
-            <button>CONTACT ME</button>
-            <button>SEE MY RESUME</button>
+            <button onclick="window.location.href='#contact'">
+              CONTACT ME
+            </button>
+            <a
+              target="_blank"
+              href="https://drive.google.com/file/d/1PfDSTk797qL7O7_zd5_ERVNhkY539Oi6/view?usp=drive_link"
+            >
+              <button>SEE MY RESUME</button>
+            </a>
           </div>
         </div>
       </div>
@@ -143,18 +150,22 @@
           <p class="xyz">
             Open source pojects, <br />Web Apps and experimental
           </p>
-          <button class="button-arrow">
-            <p>SEE MY WORK</p>
-            <img src="./img/arrow.png" />
-          </button>
+          <a href="#portfolio">
+            <button class="button-arrow">
+              <p>SEE MY WORK</p>
+              <img src="./img/arrow.png" />
+            </button>
+          </a>
         </div>
         <div class="about-right">
           <h1>I Write, <br />Sometimes</h1>
           <p class="xyz">About Design <br />Front-end Dev and Backend Dev</p>
-          <button class="button-arrow">
-            <p>READ MY BLOG</p>
-            <img src="./img/arrow.png" />
-          </button>
+          <a href="./blog.html">
+            <button class="button-arrow">
+              <p>READ MY BLOG</p>
+              <img src="./img/arrow.png" />
+            </button>
+          </a>
         </div>
       </div>
     </section>
