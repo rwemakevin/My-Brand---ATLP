@@ -42,6 +42,7 @@ form {
 
 .form > h1 {
   margin-bottom: 2.5rem;
+  font-size: 1.2rem;
 }
 .form > h1,
 form > p {
@@ -80,7 +81,6 @@ form button {
   main {
     width: auto;
     display: block;
-    border: 1px solid red;
   }
 
   .container {

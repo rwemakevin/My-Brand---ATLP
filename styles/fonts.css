@@ -83,3 +83,23 @@ p.description {
 .signup-button {
   font-family: "Montserrat", sans-serif;
 }
+
+.blog-header ul {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.blog-body p.date {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.blog-body h1.title {
+  font-family: "Monda", sans-serif;
+}
+
+.blog-body p.content {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.blog-foot {
+  font-family: "Nunito Sans", sans-serif;
+}

@@ -1,0 +1,95 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: #171c28;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto 3rem auto;
+}
+
+.blog-header {
+  background-color: #414a53;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-header > * {
+  flex: 1;
+}
+
+.left ul {
+  display: flex;
+  list-style-type: none;
+  gap: 40px;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.left li {
+  padding: 3px 0;
+  color: white;
+  font-weight: bold;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.right img {
+  width: 1.3rem;
+  height: auto;
+}
+
+.blog-body {
+  background-color: white;
+  padding: 4rem 2rem;
+}
+
+.blog-body .date {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.blog-body h1.title {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto 2rem auto;
+  font-size: 2.8rem;
+}
+
+p.content {
+  margin-bottom: 1rem;
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 146%;
+}
+
+.blog-foot {
+  padding-top: 2rem;
+}
+
+.author {
+  color: #414a53;
+}
+
+.bold {
+  font-weight: bold;
+}
