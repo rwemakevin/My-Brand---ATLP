@@ -87,7 +87,7 @@ nav {
 
   align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 2.7rem;
   margin: 2rem 0;
 }
 
@@ -103,7 +103,7 @@ nav {
 }
 
 .hero-img img {
-  width: 100%;
+  width: 80%;
   height: auto;
 }
 
