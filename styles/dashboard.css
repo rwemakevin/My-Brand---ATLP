@@ -9,3 +9,67 @@
 html {
   font-size: 16px;
 }
+
+main {
+  border: 1px solid red;
+  display: flex;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+main > div {
+  border: 1px solid yellow;
+}
+
+.sidebar {
+  flex: 0 0 25%;
+  background: yellow;
+  background-color: #dde0e6;
+  padding: 1.2rem 1.5rem;
+}
+
+.main-content {
+  flex: 1;
+  background-color: bisque;
+  padding: 1.2rem;
+}
+
+.user-info {
+  border-bottom: 1px solid black;
+  padding: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.user-info p {
+  padding-top: 0.9rem;
+}
+
+.links {
+  border-bottom: 1px solid black;
+  padding: 50px 0;
+}
+
+.link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0 15px 30px;
+}
+
+.active {
+  border-left: 5px solid #34a853;
+  background-color: rgba(52, 168, 83, 0.15);
+}
+
+.link:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.customize {
+  padding: 50px 0;
+}
+
+.customize h3 {
+  margin-bottom: 20px;
+}
