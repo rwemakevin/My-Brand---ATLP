@@ -1,0 +1,378 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+main {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sidebar {
+  flex: 0 0 25%;
+
+  background-color: #dde0e6;
+  padding: 1.2rem 1.5rem;
+}
+
+.main-content {
+  flex: 1;
+
+  padding: 1rem;
+}
+
+.user-info {
+  border-bottom: 1px solid rgb(212, 210, 210);
+  padding: 0 0 1rem 0;
+  text-align: center;
+}
+
+.user-info p {
+  padding-top: 0.9rem;
+}
+
+.links {
+  border-bottom: 1px solid rgb(212, 210, 210);
+  padding: 20px 0;
+}
+
+.link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+
+  padding: 10px 0 10px 30px;
+}
+
+.link p {
+  font-size: 0.8rem;
+}
+
+.active {
+  border-left: 5px solid #34a853;
+  background-color: rgba(52, 168, 83, 0.15);
+}
+
+.link:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.customize {
+  padding: 20px 0;
+}
+
+.customize h3 {
+  margin-bottom: 20px;
+}
+
+.main-content > .nav {
+  background-color: #dde0e6;
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-icons {
+  display: flex;
+
+  gap: 28px;
+}
+
+.welcome {
+  padding: 15px;
+  /* border: 1px solid rgb(163, 163, 163); */
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  margin: 15px 0;
+  border-radius: 7px;
+  display: flex;
+  background-color: #151924;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome > * {
+  padding: 2px;
+}
+
+.welcome-title {
+  flex: 0 0 70%;
+}
+
+.welcome-search {
+  flex: 1;
+}
+
+.welcome-search input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+}
+
+.welcome-search input::placeholder {
+  text-align: right;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.featured {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: stretch;
+  margin: 15px 0;
+}
+
+.card {
+  flex: 1;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 15px 10px;
+  background-color: #dde0e6;
+  border-radius: 5px;
+}
+
+.card-upper {
+  display: flex;
+  justify-content: space-between;
+
+  align-items: stretch;
+  margin-bottom: 2rem;
+}
+
+.card-upper img {
+  padding: 15px;
+  border: 3px solid #34a853;
+  background-color: #171c28;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 7px;
+}
+
+.card-upper > div {
+  text-align: right;
+}
+
+.card-upper > div p {
+  font-size: 0.9rem;
+  font-family: "Monda", sans-serif;
+}
+.card-upper h3 {
+  font-size: 1.5rem;
+}
+
+.card-lower {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  margin-top: 0px;
+}
+
+.card-lower img {
+  padding: 5px;
+}
+
+.card-lower p {
+  font-size: 0.7rem;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: stretch;
+}
+
+.summary > * {
+  padding: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.summary-left {
+  flex: 0 0 65%;
+  padding: 15px;
+  background-color: #dde0e6;
+  border-radius: 7px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex > h3 {
+  font-size: 1rem;
+  color: #171c28;
+  font-family: "Monda", sans-serif;
+}
+
+.flex > button {
+  border: none;
+  padding: 10px 20px;
+  background-color: white;
+  color: #151924;
+  border: 2px solid #151924;
+}
+
+.summary-right {
+  flex: 1;
+  padding: 15px;
+  background-color: #dde0e6;
+  border-radius: 7px;
+}
+
+.summary-right > h3,
+.summary-left > h3 {
+  font-size: 1rem;
+  color: #171c28;
+  font-family: "Monda", sans-serif;
+}
+
+.top-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+  gap: 4px;
+  border-radius: 5px;
+  align-items: stretch;
+  align-content: center;
+  margin: 15px 0;
+  /* background-color: #171c28; */
+  background-color: #151924;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.top-card > * {
+  flex: 1;
+}
+
+.top-card-metric {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.top-card-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.top-card-info {
+  padding: 5px;
+  font-family: "Nunito Sans", sans-serif;
+  color: white;
+}
+
+.top-card-info h6 {
+  font-size: 0.9rem;
+}
+
+.top-card-info :nth-child(2) {
+  font-weight: light;
+  font-size: 0.8rem;
+}
+
+.top-card-info :nth-child(3) {
+  color: #34a853;
+
+  font-size: 0.8rem;
+}
+
+.top-card-metric h2 {
+  color: #34a853;
+  font-weight: bold;
+  font-size: 2.4rem;
+  font-family: "Monda", sans-serif;
+}
+
+#bar-chart {
+  padding: 20px;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+/* for table */
+.mb {
+  margin-bottom: 15px;
+}
+.responsive-table {
+  li {
+    border-radius: 3px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .table-header {
+    background-color: #151924;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .col-1 {
+    flex-basis: 10%;
+  }
+  .col-2 {
+    flex-basis: 30%;
+  }
+  .col-3 {
+    flex-basis: 30%;
+  }
+  .col-4 {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .action-button button {
+    padding: 0 15px;
+  }
+
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: none;
+    }
+    .table-row {
+    }
+    li {
+      display: block;
+    }
+    .col {
+      flex-basis: 100%;
+    }
+    .col {
+      display: flex;
+      padding: 10px 0;
+      &:before {
+        color: #6c7a89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+  }
+}
