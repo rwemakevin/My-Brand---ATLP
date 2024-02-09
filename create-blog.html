@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500&family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monda&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/fonts.css" />
+    <link rel="stylesheet" href="./styles/createblog.css" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="sidebar">
+        <div class="user-info">
+          <img src="./img/avatar.png" alt="" srcset="" />
+          <p>Kevin Rwema</p>
+        </div>
+        <div class="links">
+          <div class="link">
+            <img src="./img/dashboard-icon.png" alt="" />
+            <p>DASHBOARD</p>
+          </div>
+          <div class="link">
+            <img src="./img/users.png" alt="" />
+            <p>USERS</p>
+          </div>
+          <div class="link active">
+            <img src="./img/blog.png" alt="" />
+            <p>BLOGS</p>
+          </div>
+          <div class="link">
+            <img src="./img/messages.png" alt="" />
+            <p>MESSAGES</p>
+          </div>
+        </div>
+        <div class="customize">
+          <h3>CUSTOMIZE</h3>
+          <div class="link">
+            <img src="./img/gear.png" alt="" />
+            <p>SETTINGS</p>
+          </div>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="nav">
+          <div class="nav-icons">
+            <img src="./img/notification.png" alt="" srcset="" />
+            <img src="./img/profile.png" alt="" srcset="" />
+          </div>
+        </div>
+        <div class="welcome">
+          <div class="welcome-title">
+            <h1>Create a new Blog</h1>
+          </div>
+          <div class="welcome-search">
+            <input type="text" placeholder="Search" />
+          </div>
+        </div>
+        <textarea id="editor"></textarea>
+        <button class="submit-blog">publish</button>
+        <script>
+          ClassicEditor.create(document.querySelector("#editor")).catch(
+            (error) => {
+              console.error(error);
+            }
+          );
+        </script>
+      </div>
+    </main>
+  </body>
+</html>
