@@ -93,3 +93,170 @@ p.content {
 .bold {
   font-weight: bold;
 }
+
+hr.devider-blog {
+  margin: 2rem 0;
+  height: 1px;
+  border-top: 1px solid #e2dfdf;
+}
+
+.like-section {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.like-section > div {
+  border: 2px solid #959292;
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(238, 237, 237, 0.438);
+  font-family: "Montserrat", sans-serif;
+  color: #4e4e4e;
+}
+
+.like-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.like-button i {
+  font-size: 12px;
+}
+
+.like-left p {
+  font-size: 14px;
+}
+
+.like-right {
+  padding-left: 10px;
+  border-left: 1px solid #959292;
+}
+
+.like-right p {
+  font-weight: bold;
+}
+
+.comment-section {
+  display: flex;
+  background-color: rgba(238, 237, 237, 0.438);
+  padding: 20px;
+  gap: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.list-comments {
+  flex: 1;
+}
+
+.listed {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  padding: 5px 5px 10px 5px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-bottom: 1rem;
+  align-items: center;
+  border-radius: 5px;
+  background-color: white;
+  font-family: "Nunito Sans", sans-serif;
+}
+.avatar-comment {
+  flex: 1;
+  text-align: center;
+  align-self: flex-start;
+  padding: 5px 0;
+}
+
+.avatar-comment i {
+  font-size: 2rem;
+}
+.content-comment {
+  flex: 0 0 80%;
+}
+
+.content-comment > p {
+  font-size: 1rem;
+  text-align: left;
+  color: #35373a;
+}
+
+.comment-head {
+  display: flex;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.comment-head p:nth-child(1) {
+  font-weight: bold;
+}
+
+.comment-head p:nth-child(2) {
+  font-size: 0.9rem;
+  color: #959292;
+}
+.comment-foot {
+  display: flex;
+  margin-top: 20px;
+  gap: 25px;
+}
+
+.comment-foot i {
+  color: #a3a3a3;
+}
+
+.comment-title {
+  background-color: #414a53;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.6rem;
+  margin-bottom: 15px;
+}
+
+.form-flex {
+  padding: 3px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-flex input {
+  flex: 0 0 49%;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #959292;
+  border-radius: 4px;
+}
+
+.form-flex input::placeholder {
+  font-family: "Nunito Sans", sans-serif;
+  color: #171c28;
+}
+
+.submit-comment {
+  padding: 10px 30px;
+  margin-top: 1rem;
+  color: white;
+  background-color: #414a53;
+  border: none;
+  border-radius: 4px;
+
+  font-family: "Nunito Sans", sans-serif;
+}
+
+footer {
+  background-color: #1c2834;
+  color: #7f8286;
+  padding: 15px;
+  text-align: center;
+}
