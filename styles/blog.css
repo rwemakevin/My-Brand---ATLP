@@ -90,16 +90,17 @@ main {
 }
 
 .learn-more {
-  background: none;
+  background-color: rgba(255, 255, 255, 0);
   width: 251px;
   padding: 15px;
   text-align: center;
   border: 2px solid white;
   border-radius: 32px;
   color: white;
-  font-weight: bold;
+
   margin-top: 30px;
   letter-spacing: 0.2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 #blog-section {
@@ -170,6 +171,12 @@ footer {
     margin: 0 auto;
   }
 
+  .learn-more {
+    background-color: #171c28;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+  }
+
   main {
     height: auto;
     display: flex;
@@ -181,6 +188,12 @@ footer {
   .menu {
     margin: 0;
     padding: 20px 0;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #1c2834;
   }
 
   .item a {
@@ -229,10 +242,6 @@ footer {
 }
 
 @media screen and (min-width: 429px) and (max-width: 834px) {
-  body {
-    border: 1px solid red;
-  }
-
   main {
     height: auto;
     margin: 0;
@@ -248,6 +257,11 @@ footer {
     width: 100%;
     margin: 0;
     padding: 0.7rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #1c2834;
   }
 
   .menu > div {
@@ -299,5 +313,11 @@ footer {
 
   #blog-section > div {
     background-color: white;
+  }
+
+  .learn-more {
+    background-color: #171c28;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
   }
 }

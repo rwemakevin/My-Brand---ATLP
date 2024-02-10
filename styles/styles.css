@@ -13,8 +13,14 @@ html {
 }
 
 nav {
+  margin-top: 0px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: #171c28;
 }
 
 .container {

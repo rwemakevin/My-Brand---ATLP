@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 html {
   font-size: 16px;
 }
@@ -25,6 +29,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .blog-header > * {
@@ -183,7 +190,7 @@ hr.devider-blog {
 }
 
 .content-comment > p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: left;
   color: #35373a;
 }
@@ -218,7 +225,7 @@ hr.devider-blog {
   padding: 10px;
   border-radius: 4px;
   font-family: "Nunito Sans", sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   margin-bottom: 15px;
 }
 
@@ -259,4 +266,109 @@ footer {
   color: #7f8286;
   padding: 15px;
   text-align: center;
+}
+
+@media screen and (max-width: 428px) {
+  .container {
+    width: 100%;
+  }
+
+  .blog-header {
+    padding: 10px;
+  }
+
+  .left ul {
+    gap: 20px;
+    font-size: 0.8rem;
+  }
+
+  .right {
+    gap: 20px;
+  }
+
+  .right img {
+    width: 1rem;
+    height: auto;
+  }
+
+  .blog-body {
+    padding: 1rem;
+  }
+
+  .blog-body h1.title {
+    width: 100%;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .blog-foot {
+    padding: 10px 0;
+  }
+
+  .like-section {
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+  }
+
+  .comment-section {
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .comment-title h1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  button.submit-comment {
+    text-align: center;
+    width: 60%;
+    margin: 5% 20%;
+  }
+}
+
+@media screen and (min-width: 429px) and (max-width: 1250px) {
+  .container {
+    width: 95%;
+  }
+
+  .blog-header {
+    padding: 15px;
+  }
+
+  .left ul {
+    gap: 15px;
+    font: 0.8rem;
+  }
+
+  .right {
+    gap: 20px;
+  }
+
+  .blog-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .blog-body h1.title {
+    width: 100%;
+    font-size: 1.3rem;
+  }
+
+  .comment-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .avatar-comment {
+    padding: 15px;
+  }
+
+  .avatar-comment i {
+    font-size: 3.5rem;
+  }
 }
