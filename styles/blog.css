@@ -232,6 +232,10 @@ footer {
     padding: 20px;
   }
 
+  .welcome > div p {
+    font-size: 1.1rem;
+  }
+
   #blog-section {
     background-color: #171c28;
   }
