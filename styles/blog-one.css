@@ -154,8 +154,23 @@ hr.devider-blog {
   background-color: rgba(238, 237, 237, 0.438);
   padding: 20px;
   gap: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.make-comment {
+  flex: 0 0 60%;
+}
+
+.make-comment textarea {
+  width: 100%;
+  min-height: 6rem;
+  padding: 10px;
+  border: 1px solid #959292;
+  border-radius: 4px;
+  resize: none;
+}
+
+.make-comment textarea {
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .list-comments {

@@ -93,15 +93,8 @@
               <h1>Have a comment?</h1>
             </div>
             <div class="comment-body">
-              <textarea id="editor">Your comment here</textarea>
+              <textarea>Your comment here</textarea>
 
-              <script>
-                ClassicEditor.create(document.querySelector("#editor")).catch(
-                  (error) => {
-                    console.error(error);
-                  }
-                );
-              </script>
               <div class="form-flex">
                 <input type="text" placeholder="Name" /><input
                   type="text"

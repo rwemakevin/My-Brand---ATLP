@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="./styles/blog-dashboard.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./barchart.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/e7b6b86684.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <main>
@@ -28,22 +32,30 @@
           <p>Kevin Rwema</p>
         </div>
         <div class="links">
-          <div class="link">
-            <img src="./img/dashboard-icon.png" alt="" />
-            <p>DASHBOARD</p>
-          </div>
-          <div class="link">
-            <img src="./img/users.png" alt="" />
-            <p>USERS</p>
-          </div>
-          <div class="link active">
-            <img src="./img/blog.png" alt="" />
-            <p>BLOGS</p>
-          </div>
-          <div class="link">
-            <img src="./img/messages.png" alt="" />
-            <p>MESSAGES</p>
-          </div>
+          <a href="./dashboard.html">
+            <div class="link">
+              <img src="./img/dashboard-icon.png" alt="" />
+              <p>DASHBOARD</p>
+            </div>
+          </a>
+          <a href="">
+            <div class="link">
+              <img src="./img/users.png" alt="" />
+              <p>USERS</p>
+            </div>
+          </a>
+          <a href="">
+            <div class="link active">
+              <img src="./img/blog.png" alt="" />
+              <p>BLOGS</p>
+            </div>
+          </a>
+          <a href="">
+            <div class="link">
+              <img src="./img/messages.png" alt="" />
+              <p>MESSAGES</p>
+            </div>
+          </a>
         </div>
         <div class="customize">
           <h3>CUSTOMIZE</h3>
@@ -130,7 +142,12 @@
           <div class="summary-left">
             <div class="flex mb">
               <h3>List of all Blogs</h3>
-              <a href=""><button>+ New Blog</button></a>
+              <a class="link" href="create-blog.html"
+                ><button class="btn-flex">
+                  <i class="fa-solid fa-plus add-blog"></i>
+                  <p>New</p>
+                </button></a
+              >
             </div>
             <div class="container">
               <ul class="responsive-table">
@@ -141,16 +158,13 @@
                   <div class="col col-4">Acton</div>
                 </li>
                 <li class="table-row">
-                  <div class="col col-1" data-label="Job Id">42235</div>
-                  <div class="col col-2" data-label="Customer Name">
-                    John Doe
-                  </div>
-                  <div class="col col-3" data-label="Amount">How to code</div>
-                  <div
-                    class="col col-4 action-button"
-                    data-label="Payment Status"
-                  >
-                    <button>Read</button><button>Archive</button>
+                  <div class="col col-1" data-label="Id">42235</div>
+                  <div class="col col-2" data-label="Author">John Doe</div>
+                  <div class="col col-3" data-label="Title">How to code</div>
+                  <div class="col col-4 action-icon" data-label="Action">
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
                   </div>
                 </li>
                 <li class="table-row">
@@ -160,10 +174,12 @@
                   </div>
                   <div class="col col-3" data-label="Amount">How to code</div>
                   <div
-                    class="col col-4 action-button"
+                    class="col col-4 action-icon"
                     data-label="Payment Status"
                   >
-                    <button>Read</button><button>Archive</button>
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
                   </div>
                 </li>
                 <li class="table-row">
@@ -173,10 +189,12 @@
                   </div>
                   <div class="col col-3" data-label="Amount">How to code</div>
                   <div
-                    class="col col-4 action-button"
+                    class="col col-4 action-icon"
                     data-label="Payment Status"
                   >
-                    <button>Read</button><button>Archive</button>
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
                   </div>
                 </li>
                 <li class="table-row">
@@ -186,10 +204,12 @@
                   </div>
                   <div class="col col-3" data-label="Amount">How to code</div>
                   <div
-                    class="col col-4 action-button"
+                    class="col col-4 action-icon"
                     data-label="Payment Status"
                   >
-                    <button>Read</button><button>Archive</button>
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
                   </div>
                 </li>
               </ul>
