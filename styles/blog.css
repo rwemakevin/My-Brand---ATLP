@@ -15,6 +15,26 @@ body {
   background-color: #171c28;
 }
 
+.small-nav {
+  background-color: #171c28;
+  padding: 20px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 2px solid white;
+  justify-content: flex-end;
+  display: none;
+}
+
+.small-nav button {
+  padding: 5px;
+}
+
+#reveal {
+  display: none;
+}
+
 .container {
   width: 80%;
   margin: 0 auto;
@@ -166,6 +186,34 @@ footer {
 }
 
 @media screen and (max-width: 428px) {
+  .small-nav {
+    display: flex;
+  }
+
+  #reveal {
+    background-color: #171c28;
+    padding: 0;
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    transition: left 0.3s ease;
+  }
+
+  #reveal a {
+    display: block;
+    padding: 25px 20px;
+    background-color: #222836;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: rgb(201, 198, 198);
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    line-height: 146%;
+    border-bottom: #bebbbb 2px solid;
+  }
+
   .container {
     width: 100%;
     margin: 0 auto;
@@ -188,7 +236,8 @@ footer {
   .menu {
     margin: 0;
     padding: 20px 0;
-
+    border: 1px solid red;
+    display: none;
     position: fixed;
     top: 0;
     width: 100%;
@@ -251,6 +300,10 @@ footer {
     margin: 0;
     display: block;
     padding: 0;
+  }
+
+  .reveal {
+    display: none;
   }
 
   .menu {

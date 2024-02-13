@@ -20,6 +20,17 @@
     <link rel="stylesheet" href="./styles/blog.css" />
   </head>
   <body>
+    <div class="small-nav">
+      <button id="btn-toogle" onclick="toogleNavBar()">toggle</button>
+    </div>
+    <div id="reveal">
+      <a href="./index.html">Home</a>
+      <a href="#blog-section" onclick="hideNav()">Blog</a>
+      <a href="./index.html#portfolio">PORTFOLIO</a>
+      <a href="./index.html#contact">GET IN TOUCH</a>
+      <a href="./login.html">Login</a>
+      <a href="./signup.html">Signup</a>
+    </div>
     <main>
       <div class="menu">
         <div>
@@ -116,5 +127,6 @@
     <footer>
       <p>&copy 2024 - All rights reserved</p>
     </footer>
+    <script src="./toogle.js" defer></script>
   </body>
 </html>
