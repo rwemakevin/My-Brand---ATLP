@@ -20,8 +20,13 @@
     <link rel="stylesheet" href="./styles/blog.css" />
   </head>
   <body>
-    <div class="small-nav">
-      <button id="btn-toogle" onclick="toogleNavBar()">toggle</button>
+    <div class="small-nav" id="nav" onclick="toggleNavBar()">
+      <!-- <button id="btn-toogle" onclick="toogleNavBar()">toggle</button> -->
+      <div class="burger shadow">
+        <div id="burger1"></div>
+        <div id="burger2"></div>
+        <div id="burger3"></div>
+      </div>
     </div>
     <div id="reveal">
       <a href="./index.html">Home</a>
@@ -51,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class="welcome">
+      <div class="welcome" onclick="hideNav()">
         <div>
           <h1>BLOG</h1>
           <p>
@@ -70,7 +75,7 @@
         </div>
       </div>
     </main>
-    <section id="blog-section">
+    <section id="blog-section" onclick="hideNav()">
       <div>
         <p class="date">Nov 21, 2023</p>
         <p class="title">
