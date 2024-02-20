@@ -291,3 +291,85 @@ main {
   width: 100%;
   margin-top: 1.5rem;
 }
+
+.small-nav {
+  display: none;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: #151924;
+  color: white;
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.burger {
+  position: relative;
+  padding: 15px 10px 10px 10px;
+  width: 50px;
+
+  border-radius: 5px;
+}
+.burger div {
+  border-bottom: 3px solid white;
+  transition: all 0.3s ease-in;
+}
+
+.burger > div:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+@media screen and (max-width: 428px) {
+  .sidebar {
+    display: none;
+  }
+
+  .small-nav {
+    display: flex;
+  }
+
+  .featured {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+  }
+
+  .main-content {
+    padding: 2px;
+  }
+
+  .main-content > .nav {
+    display: none;
+  }
+
+  .summary {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .welcome {
+    display: block;
+  }
+
+  .welcome-title {
+    text-align: center;
+  }
+
+  .welcome-search {
+    display: none;
+  }
+
+  .summary-left h3,
+  .summary-right h3 {
+    text-align: center;
+  }
+}

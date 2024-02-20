@@ -199,8 +199,8 @@ nav {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
-  padding: 100px 0;
+  height: auto;
+  padding: 120px 0;
 }
 
 #portfolio h1 {
