@@ -23,14 +23,22 @@
       src="https://kit.fontawesome.com/e7b6b86684.js"
       crossorigin="anonymous"
     ></script>
+    <script src="./toogle.js" defer></script>
   </head>
   <body>
-    <div class="small-nav">
+    <div class="small-nav" id="nav" onclick="toggleNavBar()">
       <div class="burger shadow">
         <div id="burger1"></div>
         <div id="burger2"></div>
         <div id="burger3"></div>
       </div>
+    </div>
+    <div id="reveal">
+      <a href="./index.html">Home</a>
+      <a href="./blog-dashboard.html" onclick="hideNav()">Blog</a>
+      <a href="">MESSAGES</a>
+      <a href="">USERS</a>
+      <a href="">SETTINGS</a>
     </div>
     <main>
       <div class="sidebar">

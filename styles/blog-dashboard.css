@@ -416,11 +416,15 @@ a.link {
 }
 
 .small-nav {
+  background-color: #171c28;
+  padding: 15px;
+  display: flex;
   display: none;
   justify-content: flex-end;
-  padding: 10px;
-  background-color: #151924;
-  color: white;
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  border-bottom: 2px solid white;
 }
 
 .shadow {
@@ -444,6 +448,10 @@ a.link {
   margin-bottom: 12px;
 }
 
+#reveal {
+  display: none;
+}
+
 @media screen and (max-width: 428px) {
   .sidebar {
     display: none;
@@ -458,6 +466,30 @@ a.link {
     display: flex;
   }
 
+  #reveal {
+    background-color: #171c28;
+    padding: 0;
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    transition: left 0.3s ease;
+  }
+
+  #reveal a {
+    display: block;
+    padding: 25px 20px;
+    background-color: #222836;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: rgb(201, 198, 198);
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    line-height: 146%;
+    border-bottom: #bebbbb 2px solid;
+  }
+
   main {
     display: flex;
     flex-direction: column;
@@ -467,6 +499,7 @@ a.link {
 
   .main-content {
     padding: 2px;
+    margin-top: 90px;
   }
 
   .main-content > .nav {
@@ -511,8 +544,36 @@ a.link {
     display: flex;
   }
 
+  #reveal {
+    background-color: #171c28;
+    padding: 0;
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    transition: left 0.3s ease;
+  }
+
+  #reveal a {
+    display: block;
+    padding: 25px 20px;
+    background-color: #222836;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: rgb(201, 198, 198);
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    line-height: 146%;
+    border-bottom: #bebbbb 2px solid;
+  }
+
   main {
     display: block;
+  }
+
+  .nav {
+    margin-top: 100px;
   }
 
   .featured {

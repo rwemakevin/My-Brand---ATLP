@@ -67,3 +67,7 @@ const hideNav = () => {
   div.style.left = "-300px";
   resetBurgers();
 };
+
+btn.addEventListener("click", () => {
+  console.log("clicked");
+});

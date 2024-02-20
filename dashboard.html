@@ -19,16 +19,24 @@
     <link rel="stylesheet" href="./styles/dashboard.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./barchart.js" defer></script>
+    <script src="./toogle.js" defer></script>
   </head>
   <body>
-    <div class="small-nav">
+    <div class="small-nav" id="nav" onclick="toggleNavBar()">
       <div class="burger shadow">
         <div id="burger1"></div>
         <div id="burger2"></div>
         <div id="burger3"></div>
       </div>
     </div>
-    <main>
+    <div id="reveal">
+      <a href="./index.html">Home</a>
+      <a href="./blog-dashboard.html" onclick="hideNav()">Blog</a>
+      <a href="">MESSAGES</a>
+      <a href="">USERS</a>
+      <a href="">SETTINGS</a>
+    </div>
+    <main onclick="hideNav()">
       <div class="sidebar">
         <div class="user-info">
           <img src="./img/avatar.png" alt="" srcset="" />
