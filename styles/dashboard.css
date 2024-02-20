@@ -373,3 +373,65 @@ main {
     text-align: center;
   }
 }
+
+@media screen and (min-width: 429px) and (max-width: 834px) {
+  .sidebar {
+    display: none;
+  }
+
+  .small-nav {
+    display: flex;
+  }
+
+  main {
+    display: block;
+  }
+
+  .featured {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .summary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .summary > .summary-left {
+    width: 100%;
+    flex: 1;
+  }
+
+  .summary > .summary-right {
+    padding: 0px;
+    margin: 0;
+    flex: 1;
+    width: 100%;
+  }
+
+  .card-flex {
+    display: flex;
+
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .card-flex > div {
+    margin: 0;
+    flex: 1;
+  }
+
+  .card-flex > div:last-child {
+    flex: 1;
+  }
+
+  .summary-left h3,
+  .summary-right h3 {
+    text-align: center;
+  }
+}
