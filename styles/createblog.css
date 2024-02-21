@@ -261,3 +261,44 @@ main {
   border-radius: 4px;
   font-family: "Montserrat", sans-serif;
 }
+
+.edit-blog-container {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  padding: 20px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.form-flex {
+  display: flex;
+  gap: 20px;
+}
+
+.form-flex input {
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* #edit-blog-form textarea {
+  width: 100%;
+  resize: none;
+  border-radius: 5px;
+  min-height: 200px;
+  margin-bottom: 40px;
+  padding: 20px;
+} */
+
+.form-flex button {
+  width: 100%;
+  border: 1px solid gray;
+  padding: 10px 0;
+  border-radius: 5px;
+}

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,14 +15,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/fonts.css" />
+    <link rel="stylesheet" href=".styles/modal.css" />
     <link rel="stylesheet" href="./styles/blog-dashboard.css" />
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./barchart.js" defer></script>
+
     <script
       src="https://kit.fontawesome.com/e7b6b86684.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
     <script src="./toogle.js" defer></script>
+    <script src="./crud.js" defer></script>
   </head>
   <body>
     <div class="small-nav" id="nav" onclick="toggleNavBar()">
@@ -157,22 +160,21 @@
           <div class="summary-left">
             <div class="flex mb">
               <h3>List of all Blogs</h3>
-              <a class="link" href="create-blog.html"
-                ><button class="btn-flex">
-                  <i class="fa-solid fa-plus add-blog"></i>
-                  <p>New</p>
-                </button></a
-              >
+              <button class="btn-flex" id="myBtn">
+                <i class="fa-solid fa-plus add-blog"></i>
+                <p>New</p>
+              </button>
             </div>
             <div class="container">
-              <ul class="responsive-table">
-                <li class="table-header">
+              <ul class="responsive-table" id="resp-table">
+                <!-- <li class="table-header">
                   <div class="col col-1">Id</div>
                   <div class="col col-2">Author</div>
                   <div class="col col-3">Title</div>
                   <div class="col col-4">Acton</div>
                 </li>
-                <li class="table-row">
+                <h2 class="empty-blog">Empty</h2> -->
+                <!-- <li class="table-row">
                   <div class="col col-1" data-label="Id">42235</div>
                   <div class="col col-2" data-label="Author">John Doe</div>
                   <div class="col col-3" data-label="Title">How to code</div>
@@ -226,7 +228,7 @@
                     <i class="fa-solid fa-pen-to-square"></i>
                     <i class="fa-solid fa-trash"></i>
                   </div>
-                </li>
+                </li>  -->
               </ul>
             </div>
           </div>
@@ -273,6 +275,41 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="close-model-flex">
+            <p class="modal-title">Create Blog</p>
+            <p class="close">&times;</p>
+          </div>
+
+          <div class="new-blog-container">
+            <form action="" id="add-blog">
+              <div class="form-flex">
+                <input
+                  type="text"
+                  id="input-blog-author"
+                  required
+                  placeholder="Author Name"
+                />
+                <input
+                  type="text"
+                  id="input-blog-title"
+                  required
+                  placeholder="Blog Title"
+                />
+              </div>
+              <textarea required id="blog-content" class="new-blog">
+you</textarea
+              >
+              <div class="form-flex">
+                <button type="submit">Publish</button>
+                <button onClick="clearInputs()">Clear</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
