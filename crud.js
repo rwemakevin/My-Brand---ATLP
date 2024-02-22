@@ -8,7 +8,7 @@ var modal = document.getElementById("myModal");
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("blogs"))
-    bookmarks = JSON.parse(localStorage.getItem("blogs"));
+    blogs = JSON.parse(localStorage.getItem("blogs"));
   listBlogs();
   console.log(localStorage.getItem("blogs"));
 });

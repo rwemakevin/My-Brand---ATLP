@@ -3,6 +3,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BLOG Dashboard</title>
+    <script
+      src="https://cdn.tiny.cloud/1/xckg40r14vyks42evs46517x8k7xl9wahdpjj1v4v6yww5fr/tinymce/6/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,8 +28,9 @@
       src="https://kit.fontawesome.com/e7b6b86684.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+
     <script src="./toogle.js" defer></script>
+
     <script src="./crud.js" defer></script>
   </head>
   <body>
@@ -38,12 +43,12 @@
     </div>
     <div id="reveal">
       <a href="./index.html">Home</a>
-      <a href="./blog-dashboard.html" onclick="hideNav()">Blog</a>
-      <a href="">MESSAGES</a>
-      <a href="">USERS</a>
+      <a href="./blog-dashboard.html">Blog</a>
+      <a href="./messages.html">MESSAGES</a>
+      <a href="./users.html">USERS</a>
       <a href="">SETTINGS</a>
     </div>
-    <main>
+    <main onclick="hideNav()">
       <div class="sidebar">
         <div class="user-info">
           <img src="./img/avatar.png" alt="" srcset="" />
@@ -56,7 +61,7 @@
               <p>DASHBOARD</p>
             </div>
           </a>
-          <a href="">
+          <a href="./users.html">
             <div class="link">
               <img src="./img/users.png" alt="" />
               <p>USERS</p>
@@ -68,7 +73,7 @@
               <p>BLOGS</p>
             </div>
           </a>
-          <a href="">
+          <a href="./messages.html">
             <div class="link">
               <img src="./img/messages.png" alt="" />
               <p>MESSAGES</p>
@@ -278,6 +283,7 @@
           </div>
         </div>
       </div>
+
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
@@ -302,7 +308,7 @@
                   placeholder="Blog Title"
                 />
               </div>
-              <textarea required id="blog-content" class="new-blog">
+              <textarea id="blog-content" class="new-blog" required>
 you</textarea
               >
               <div class="form-flex">

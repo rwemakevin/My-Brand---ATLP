@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="stylesheet" href="./styles/fonts.css" />
     <link rel="stylesheet" href="./styles/responsive.css" />
+    <script src="./contact.js" defer></script>
   </head>
   <body>
     <nav>
@@ -195,21 +196,27 @@
         </div>
         <div class="contact-right">
           <div class="form-container">
-            <form action="">
-              <div class="input-item">
+            <form id="contact-form" action="">
+              <div class="input-item" d>
                 <p>name</p>
-                <input type="text" />
+                <input type="text" id="user-name" required />
               </div>
               <div class="input-item">
                 <p>Email</p>
-                <input type="text" />
+                <input type="email" id="user-email" required />
               </div>
               <div class="input-item">
                 <p>Message</p>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea
+                  required
+                  name=""
+                  id="user-message"
+                  cols="30"
+                  rows="10"
+                ></textarea>
               </div>
               <div class="input-item">
-                <button>SEND</button>
+                <button type="submit">SEND</button>
               </div>
             </form>
           </div>

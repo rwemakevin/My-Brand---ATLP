@@ -1,9 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Users Dashboard</title>
+    <script
+      src="https://cdn.tiny.cloud/1/xckg40r14vyks42evs46517x8k7xl9wahdpjj1v4v6yww5fr/tinymce/6/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,10 +19,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/fonts.css" />
-    <link rel="stylesheet" href="./styles/dashboard.css" />
+    <link rel="stylesheet" href=".styles/modal.css" />
+    <link rel="stylesheet" href="./styles/blog-dashboard.css" />
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./barchart.js" defer></script>
+
+    <script
+      src="https://kit.fontawesome.com/e7b6b86684.js"
+      crossorigin="anonymous"
+    ></script>
+
     <script src="./toogle.js" defer></script>
+
+    <script src="./crud.js" defer></script>
   </head>
   <body>
     <div class="small-nav" id="nav" onclick="toggleNavBar()">
@@ -31,7 +43,7 @@
     </div>
     <div id="reveal">
       <a href="./index.html">Home</a>
-      <a href="./blog-dashboard.html" onclick="hideNav()">Blog</a>
+      <a href="./blog-dashboard.html">Blog</a>
       <a href="./messages.html">MESSAGES</a>
       <a href="./users.html">USERS</a>
       <a href="">SETTINGS</a>
@@ -43,8 +55,8 @@
           <p>Kevin Rwema</p>
         </div>
         <div class="links">
-          <a href="">
-            <div class="link active">
+          <a href="./dashboard.html">
+            <div class="link">
               <img src="./img/dashboard-icon.png" alt="" />
               <p>DASHBOARD</p>
             </div>
@@ -62,7 +74,7 @@
             </div>
           </a>
           <a href="./messages.html">
-            <div class="link">
+            <div class="link active">
               <img src="./img/messages.png" alt="" />
               <p>MESSAGES</p>
             </div>
@@ -85,7 +97,7 @@
         </div>
         <div class="welcome">
           <div class="welcome-title">
-            <h1>MAIN DASHBOARD</h1>
+            <h1>MESSAGES DASHBOARD</h1>
           </div>
           <div class="welcome-search">
             <input type="text" placeholder="Search" />
@@ -151,8 +163,79 @@
         </div>
         <div class="summary">
           <div class="summary-left">
-            <h3>Insights on Blog Comments per Year</h3>
-            <canvas id="bar-chart" style="height: 100%"> </canvas>
+            <div class="flex mb">
+              <h3>List of all Messages</h3>
+              <button class="btn-flex" id="myBtn">
+                <i class="fa-solid fa-plus add-blog"></i>
+                <p>New</p>
+              </button>
+            </div>
+            <div class="container">
+              <ul class="responsive-table" id="resp-table">
+                <!-- <li class="table-header">
+                  <div class="col col-1">Id</div>
+                  <div class="col col-2">Author</div>
+                  <div class="col col-3">Title</div>
+                  <div class="col col-4">Acton</div>
+                </li>
+                <h2 class="empty-blog">Empty</h2> -->
+                <!-- <li class="table-row">
+                  <div class="col col-1" data-label="Id">42235</div>
+                  <div class="col col-2" data-label="Author">John Doe</div>
+                  <div class="col col-3" data-label="Title">How to code</div>
+                  <div class="col col-4 action-icon" data-label="Action">
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
+                  </div>
+                </li>
+                <li class="table-row">
+                  <div class="col col-1" data-label="Job Id">42235</div>
+                  <div class="col col-2" data-label="Customer Name">
+                    John Doe
+                  </div>
+                  <div class="col col-3" data-label="Amount">How to code</div>
+                  <div
+                    class="col col-4 action-icon"
+                    data-label="Payment Status"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
+                  </div>
+                </li>
+                <li class="table-row">
+                  <div class="col col-1" data-label="Job Id">42235</div>
+                  <div class="col col-2" data-label="Customer Name">
+                    John Doe
+                  </div>
+                  <div class="col col-3" data-label="Amount">How to code</div>
+                  <div
+                    class="col col-4 action-icon"
+                    data-label="Payment Status"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
+                  </div>
+                </li>
+                <li class="table-row">
+                  <div class="col col-1" data-label="Job Id">42235</div>
+                  <div class="col col-2" data-label="Customer Name">
+                    John Doe
+                  </div>
+                  <div class="col col-3" data-label="Amount">How to code</div>
+                  <div
+                    class="col col-4 action-icon"
+                    data-label="Payment Status"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
+                  </div>
+                </li>  -->
+              </ul>
+            </div>
           </div>
           <div class="summary-right">
             <h3>Top weekly Blog author</h3>
@@ -197,6 +280,42 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="close-model-flex">
+            <p class="modal-title">Create Blog</p>
+            <p class="close">&times;</p>
+          </div>
+
+          <div class="new-blog-container">
+            <form action="" id="add-blog">
+              <div class="form-flex">
+                <input
+                  type="text"
+                  id="input-blog-author"
+                  required
+                  placeholder="Author Name"
+                />
+                <input
+                  type="text"
+                  id="input-blog-title"
+                  required
+                  placeholder="Blog Title"
+                />
+              </div>
+              <textarea id="blog-content" class="new-blog" required>
+you</textarea
+              >
+              <div class="form-flex">
+                <button type="submit">Publish</button>
+                <button onClick="clearInputs()">Clear</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
