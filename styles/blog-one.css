@@ -89,6 +89,11 @@ p.content {
   line-height: 146%;
 }
 
+pre {
+  font-family: "Monda", sans-serif;
+  width: 100%;
+}
+
 .blog-foot {
   padding-top: 2rem;
 }

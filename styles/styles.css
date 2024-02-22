@@ -412,3 +412,16 @@ footer {
   color: #bebbbb;
   padding: 15px 0;
 }
+
+.success {
+  display: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  margin-bottom: 15px;
+  padding: 7px 10px;
+  color: #171c28;
+  border-left: 5px solid black;
+  transition: all ease-in 0.5s;
+  background-color: #b0b1b3c4;
+}

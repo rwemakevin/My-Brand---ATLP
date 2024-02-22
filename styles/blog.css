@@ -175,6 +175,16 @@ p.description {
   margin-bottom: 1.5rem;
   line-height: 146%;
   font-size: 0.95rem;
+  font-family: "Monda", sans-serif;
+  text-align: justify;
+}
+
+p.description + p {
+  color: #171c28;
+  margin-bottom: 1.5rem;
+  line-height: 146%;
+  font-size: 0.95rem;
+  font-family: "Monda", sans-serif;
   text-align: justify;
 }
 
@@ -192,6 +202,13 @@ p.description {
   color: white;
 
   transition: 0.3s ease-in all;
+}
+
+#blog-section h2.empty-blog {
+  padding: 50px 10px;
+  text-align: center;
+  font-family: "Monda", sans-serif;
+  width: 100%;
 }
 
 footer {
@@ -251,7 +268,7 @@ footer {
   .menu {
     margin: 0;
     padding: 20px 0;
-    border: 1px solid red;
+
     display: none;
     position: fixed;
     top: 0;

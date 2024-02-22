@@ -494,6 +494,35 @@ a.link {
   margin-bottom: 20px;
 }
 
+.form-flex-button {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-flex-button p,
+#submit {
+  width: 150px;
+  padding: 7px;
+  border: 1px solid rgb(202, 200, 200);
+  background-color: #222836;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-flex-button p:hover,
+#submit:hover {
+  background-color: #000000;
+
+  transition: 0.5s ease-in all;
+}
+
 textarea.new-blog {
   border-radius: 5px;
   width: 100%;
@@ -503,8 +532,30 @@ textarea.new-blog {
   margin-bottom: 20px;
 }
 
+#reply,
+#submit {
+  display: none;
+}
+
+button.btn-flex.refresh:hover {
+  background-color: #171c28;
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
 textarea.new-blog:focus {
   outline: none;
+}
+
+div#success {
+  display: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: #34a853;
+  color: black;
+  padding: 15px;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .form-flex input,

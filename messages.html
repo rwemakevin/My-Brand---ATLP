@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/fonts.css" />
-    <link rel="stylesheet" href=".styles/modal.css" />
+    <!-- <link rel="stylesheet" href=".styles/modal.css" /> -->
     <link rel="stylesheet" href="./styles/blog-dashboard.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -30,8 +30,9 @@
     ></script>
 
     <script src="./toogle.js" defer></script>
+    <script src="https://smtpjs.com/v3/smtp.js" defer></script>
 
-    <script src="./crud.js" defer></script>
+    <script src="./messages.js" defer></script>
   </head>
   <body>
     <div class="small-nav" id="nav" onclick="toggleNavBar()">
@@ -165,76 +166,17 @@
           <div class="summary-left">
             <div class="flex mb">
               <h3>List of all Messages</h3>
-              <button class="btn-flex" id="myBtn">
-                <i class="fa-solid fa-plus add-blog"></i>
-                <p>New</p>
+              <button class="btn-flex refresh" onclick="listMessages()">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <p>Refresh</p>
+              </button>
+              <button class="btn-flex" id="myBtn" style="display: none">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <p>Hidden</p>
               </button>
             </div>
             <div class="container">
-              <ul class="responsive-table" id="resp-table">
-                <!-- <li class="table-header">
-                  <div class="col col-1">Id</div>
-                  <div class="col col-2">Author</div>
-                  <div class="col col-3">Title</div>
-                  <div class="col col-4">Acton</div>
-                </li>
-                <h2 class="empty-blog">Empty</h2> -->
-                <!-- <li class="table-row">
-                  <div class="col col-1" data-label="Id">42235</div>
-                  <div class="col col-2" data-label="Author">John Doe</div>
-                  <div class="col col-3" data-label="Title">How to code</div>
-                  <div class="col col-4 action-icon" data-label="Action">
-                    <i class="fa-solid fa-eye"></i>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                  </div>
-                </li>
-                <li class="table-row">
-                  <div class="col col-1" data-label="Job Id">42235</div>
-                  <div class="col col-2" data-label="Customer Name">
-                    John Doe
-                  </div>
-                  <div class="col col-3" data-label="Amount">How to code</div>
-                  <div
-                    class="col col-4 action-icon"
-                    data-label="Payment Status"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                  </div>
-                </li>
-                <li class="table-row">
-                  <div class="col col-1" data-label="Job Id">42235</div>
-                  <div class="col col-2" data-label="Customer Name">
-                    John Doe
-                  </div>
-                  <div class="col col-3" data-label="Amount">How to code</div>
-                  <div
-                    class="col col-4 action-icon"
-                    data-label="Payment Status"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                  </div>
-                </li>
-                <li class="table-row">
-                  <div class="col col-1" data-label="Job Id">42235</div>
-                  <div class="col col-2" data-label="Customer Name">
-                    John Doe
-                  </div>
-                  <div class="col col-3" data-label="Amount">How to code</div>
-                  <div
-                    class="col col-4 action-icon"
-                    data-label="Payment Status"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                  </div>
-                </li>  -->
-              </ul>
+              <ul class="responsive-table" id="resp-table"></ul>
             </div>
           </div>
           <div class="summary-right">
@@ -288,32 +230,33 @@
         <!-- Modal content -->
         <div class="modal-content">
           <div class="close-model-flex">
-            <p class="modal-title">Create Blog</p>
+            <p class="modal-title">Reading message ...</p>
             <p class="close">&times;</p>
           </div>
 
           <div class="new-blog-container">
-            <form action="" id="add-blog">
+            <form action="" id="view-email">
               <div class="form-flex">
-                <input
-                  type="text"
-                  id="input-blog-author"
-                  required
-                  placeholder="Author Name"
-                />
-                <input
-                  type="text"
-                  id="input-blog-title"
-                  required
-                  placeholder="Blog Title"
-                />
+                <input disabled type="text" id="sender-name" />
+                <input disabled type="text" id="sender-email" />
               </div>
-              <textarea id="blog-content" class="new-blog" required>
-you</textarea
-              >
-              <div class="form-flex">
-                <button type="submit">Publish</button>
-                <button onClick="clearInputs()">Clear</button>
+              <textarea
+                disabled
+                id="sender-content"
+                class="new-blog"
+                required
+              ></textarea>
+              <div id="reply">
+                <textarea id="textinput" class="new-blog" required>
+Reply:</textarea
+                >
+                <div id="success"></div>
+              </div>
+              <div class="form-flex-button">
+                <p id="p-button" onclick="showReplySection()">Reply</p>
+              </div>
+              <div class="form-flex-button">
+                <button id="submit" type="submit">Send</button>
               </div>
             </form>
           </div>
