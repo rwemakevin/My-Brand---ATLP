@@ -97,7 +97,3 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-
-ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
-  console.error(error);
-});

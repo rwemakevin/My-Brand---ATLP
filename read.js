@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const m = new Date(n);
   const human = m.toLocaleDateString();
   console.log(human);
-
   date[0].innerHTML = human;
   title[0].innerHTML = blogToDisplay.title;
   content[0].innerHTML = blogToDisplay.content;

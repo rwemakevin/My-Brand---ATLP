@@ -55,10 +55,24 @@ const listBlogs = () => {
   </li>`;
     blogs = JSON.parse(localStorage.getItem("blogs"));
     blogs.forEach((item, index) => {
+      let longTitle = item.title;
+      let smallTitle = "";
+      if (longTitle.length < 15) {
+        smallTitle = longTitle;
+      } else {
+        for (let i = 0; i <= 15; i++) {
+          smallTitle += longTitle[i];
+        }
+
+        smallTitle += `...`;
+      }
+
+      console.log(longTitle);
+      console.log(smallTitle);
       respTable.innerHTML += `<li class="table-row">
             
             <div class="col col-2" data-label="Author">${item.author}</div>
-            <div class="col col-3" data-label="Title">${item.title}</div>
+            <div class="col col-3" data-label="Title">${smallTitle}</div>
             <div class="col col-4 action-icon" data-label="Action">
                <a href="./read.html?id=${item.id}" target="_blank"><i class="fa-solid fa-eye"></i></a> 
                 <i onClick="editBlog(${item.id})" class="fa-solid fa-pen-to-square"></i>
