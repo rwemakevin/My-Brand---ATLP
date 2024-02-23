@@ -2,6 +2,7 @@ const form = document.getElementById("edit-blog-form");
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const contentInput = document.getElementById("content");
+let comment = [];
 let blogs = [];
 let urlParams = new URLSearchParams(window.location.search);
 let idFromUrl = urlParams.get("id");
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   titleInput.value = blogToEdit.title;
   authorInput.value = blogToEdit.author;
   contentInput.value = blogToEdit.content;
+  comment = blogToEdit.comments;
 });
 
 form.addEventListener("submit", (e) => {
@@ -39,10 +41,15 @@ form.addEventListener("submit", (e) => {
   blogs = blogs.map((item) => {
     if (item.id == idFromUrl) {
       return {
-        id: idFromUrl,
+        // id: parseInt(idFromUrl),
+        // title: titleInput.value,
+        // content: contentInput.value,
+        // author: authorInput.value,
+        // comments: comment,
+        ...item,
+        author: authorInput.value,
         title: titleInput.value,
         content: contentInput.value,
-        author: authorInput.value,
       };
     }
     return item;
