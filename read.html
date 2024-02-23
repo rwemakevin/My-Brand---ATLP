@@ -77,13 +77,19 @@
             </div>
             <form action="" id="submit-form">
               <div class="comment-body">
-                <textarea id="comment">Your comment here</textarea>
+                <textarea required id="comment">Your comment here</textarea>
 
                 <div class="form-flex">
-                  <input type="text" placeholder="Name" id="username" /><input
+                  <input
+                    required
                     type="text"
+                    placeholder="Name"
+                    id="username"
+                  /><input
+                    type="email"
                     id="email"
                     placeholder="Email"
+                    required
                   />
                 </div>
                 <button type="submit" class="submit-comment">Submit</button>

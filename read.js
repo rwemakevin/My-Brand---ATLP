@@ -18,6 +18,7 @@ let userComment = document.getElementById("comment");
 document.addEventListener("DOMContentLoaded", () => {
   blogs = JSON.parse(localStorage.getItem("blogs"));
   let blogToDisplay = blogs.find((item) => item.id == idFromUrl);
+  commentArray = blogToDisplay.comments;
   console.log(blogToDisplay);
   const n = parseInt(blogToDisplay.id);
   const m = new Date(n);
@@ -44,7 +45,7 @@ form.addEventListener("submit", (e) => {
   };
   commentArray.push(commentData);
   // console.log(oneBlog);
-  oneBlog.comments.push(commentData);
+  //oneBlog.comments.push(commentData);
   // console.log(oneBlog.comments);
 
   blogs = blogs.map((item) => {
