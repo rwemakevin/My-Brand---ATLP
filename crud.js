@@ -20,6 +20,7 @@ addBlogForm.addEventListener("submit", (e) => {
     title: inputBlogTitle.value.trim(),
     author: inputBlogAuthor.value.trim(),
     content: blogContent.value.trim(),
+    comments: [],
   };
 
   saveBlog(blog);

@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./styles/blog-one.css" />
 
     <link rel="stylesheet" href="./styles/fonts.css" />
-    <script src="./read.js" prefer></script>
+    <script src="./read.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -75,17 +75,20 @@
             <div class="comment-title">
               <h1>Have a comment?</h1>
             </div>
-            <div class="comment-body">
-              <textarea>Your comment here</textarea>
+            <form action="" id="submit-form">
+              <div class="comment-body">
+                <textarea id="comment">Your comment here</textarea>
 
-              <div class="form-flex">
-                <input type="text" placeholder="Name" /><input
-                  type="text"
-                  placeholder="Email"
-                />
+                <div class="form-flex">
+                  <input type="text" placeholder="Name" id="username" /><input
+                    type="text"
+                    id="email"
+                    placeholder="Email"
+                  />
+                </div>
+                <button type="submit" class="submit-comment">Submit</button>
               </div>
-              <button class="submit-comment">Submit</button>
-            </div>
+            </form>
           </div>
           <div class="list-comments">
             <div class="comment-title">
