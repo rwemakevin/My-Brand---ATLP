@@ -31,7 +31,7 @@
 
     <script src="./toogle.js" defer></script>
 
-    <script src="./crud.js" defer></script>
+    <script src="./listUsers.js" defer></script>
   </head>
   <body>
     <div class="small-nav" id="nav" onclick="toggleNavBar()">
@@ -165,13 +165,13 @@
           <div class="summary-left">
             <div class="flex mb">
               <h3>List of all users</h3>
-              <button class="btn-flex" id="myBtn">
+              <button style="display: none" class="btn-flex" id="myBtn">
                 <i class="fa-solid fa-plus add-blog"></i>
                 <p>New</p>
               </button>
             </div>
             <div class="container">
-              <ul class="responsive-table" id="resp-table">
+              <ul class="responsive-table" id="display">
                 <!-- <li class="table-header">
                   <div class="col col-1">Id</div>
                   <div class="col col-2">Author</div>

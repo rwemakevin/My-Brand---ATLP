@@ -156,6 +156,14 @@ main {
   padding: 40px 20px;
 }
 
+#blog-section > div img {
+  display: none;
+}
+
+#blog-section > p img {
+  display: none !important;
+}
+
 p.date {
   font-size: 0.7rem;
   font-weight: bold;

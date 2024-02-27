@@ -16,16 +16,17 @@
       src="https://kit.fontawesome.com/e7b6b86684.js"
       crossorigin="anonymous"
     ></script>
+    <script src="./users.js" defer></script>
   </head>
   <body>
     <main>
       <div class="container">
         <div class="form">
           <h1 class="form-title">Sign up</h1>
-          <form action="">
-            <input type="text" placeholder="name" />
-            <input type="text" placeholder="email" />
-            <input type="text" placeholder="password" />
+          <form action="" id="signup">
+            <input type="text" id="full-name" placeholder="name" />
+            <input type="text" id="signup-email" placeholder="email" />
+            <input type="text" id="signup-password" placeholder="password" />
             <p>Or</p>
             <div class="google-btn">
               <img class="google-icon" src="./img/google-logo.png" alt="" />
@@ -38,6 +39,8 @@
               </div>
             </a>
             <button class="signup-button">Sign up</button>
+            <style></style>
+            <div id="signup-success"></div>
           </form>
         </div>
       </div>

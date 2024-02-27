@@ -36,7 +36,7 @@ contactForm.addEventListener("submit", (e) => {
   let userNameValue = userName.value.trim();
   let userEmailValue = userEmail.value.trim();
   let userMessageValue = userMessage.value.trim();
-  alert("Hey");
+
   const userData = {
     userNameValue,
     userEmailValue,

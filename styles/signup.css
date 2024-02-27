@@ -10,6 +10,10 @@ body {
   font-size: 16px;
 }
 
+#signup-success {
+  display: none;
+}
+
 main {
   height: 100vh;
   background-image: url("../img/porfolio-bg.jpg");
