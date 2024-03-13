@@ -5,9 +5,6 @@ let date = document.getElementsByClassName("date");
 let title = document.getElementsByClassName("title");
 let content = document.getElementsByClassName("content");
 let author = document.getElementsByClassName("author-display");
-let oneBlog;
-let blogs = [];
-let commentArray = [];
 
 //for comment form
 let form = document.getElementById("submit-form");
@@ -18,104 +15,77 @@ let userComment = document.getElementById("comment");
 //for rendering comments
 let commentSection = document.getElementsByClassName("list-comments");
 
-document.addEventListener("DOMContentLoaded", () => {
-  blogs = JSON.parse(localStorage.getItem("blogs"));
-  let blogToDisplay = blogs.find((item) => item.id == idFromUrl);
-  commentArray = blogToDisplay.comments;
-  console.log(blogToDisplay);
-  const n = parseInt(blogToDisplay.id);
-  const m = new Date(n);
-  const human = m.toLocaleDateString();
-  // console.log(human);
-  date[0].innerHTML = human;
-  title[0].innerHTML = blogToDisplay.title;
-  content[0].innerHTML = blogToDisplay.content;
-  author[0].innerHTML = blogToDisplay.author;
-  // console.log(blogToDisplay.comments);
-  oneBlog = blogToDisplay;
-  renderComments(idFromUrl);
-});
-
-const reset = () => {
-  userName.value = "";
-  userEmail.value = "";
-  userComment.value = "";
+//Date formater
+const formatDate = (arg) => {
+  const date = new Date(arg);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+  return formattedDate;
 };
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let userNameValue = userName.value;
-  let userEmailValue = userEmail.value;
-  let userCommentValue = userComment.value;
 
-  let commentData = {
-    userNameValue,
-    userEmailValue,
-    userCommentValue,
-  };
-  commentArray.push(commentData);
-  // console.log(oneBlog);
-  //oneBlog.comments.push(commentData);
-  // console.log(oneBlog.comments);
-
-  blogs = blogs.map((item) => {
-    if (item.id == idFromUrl) {
-      return {
-        ...item,
-        comments: commentArray,
-      };
-    }
-
-    return item;
-  });
-
-  localStorage.setItem("blogs", JSON.stringify(blogs));
-  renderComments(idFromUrl);
-});
-
+//render comments
 const renderComments = (arg) => {
-  // console.log(commentSection[0]);
-  let a = JSON.parse(localStorage.getItem("blogs"));
-  let b = a.find((item) => item.id == arg);
-  console.log(b);
-
-  let c = b.comments;
-  console.log(c);
-  commentSection[0].innerHTML = `
-   <div class="comment-title">
-             <h1>All comments</h1>
-     </div>
-   `;
-  if (c.length === 0) {
-    commentSection[0].innerHTML += `
-           <p class="no-comment">No Comments to show </p>
-   `;
+  const commentData = arg.comments;
+  console.log(commentData);
+  if (commentData.length === 0) {
+    console.log("empty comments");
+    commentSection[0].innerHTML += `<p class="no-comment">No Comments to show </p>`;
   } else {
-    c.forEach((item) => {
-      let commentDate = Date.now();
-      let commentDateFormated = new Date(parseInt(commentDate));
-      let commentFinalDate = commentDateFormated.toLocaleDateString();
-
+    console.log("we have something");
+    commentSection[0].innerHTML = `<div class="comment-title">
+                <h1>All comments</h1>
+         </div>`;
+    commentData.forEach((item) => {
       commentSection[0].innerHTML += `
       <div class="listed">
-      <div class="avatar-comment">
-        <i class="fa-solid fa-circle-user"></i>
-      </div>
-      <div class="content-comment">
-        <div class="comment-head">
-          <p>${item.userNameValue}</p>
-          <p>${commentFinalDate}</p>
-        </div>
-        <p>${item.userCommentValue}</p>
-        <div class="comment-foot">
-          <i class="fa-solid fa-thumbs-up"></i>
-          <i class="fa-solid fa-thumbs-down"></i>
-          <i class="fa-solid fa-heart"></i>
-        </div>
-      </div>
-    </div>
+        <div class="avatar-comment">
+              <i class="fa-solid fa-circle-user"></i>
+            </div>
+            <div class="content-comment">
+              <div class="comment-head">
+                <p>${item.name}</p>
+                <p>${formatDate(item.timestamp)}</p>
+              </div>
+              <p>${item.content}</p>
+              <div class="comment-foot">
+                <i class="fa-solid fa-thumbs-up"></i>
+                <i class="fa-solid fa-thumbs-down"></i>
+                <i class="fa-solid fa-heart"></i>
+              </div>
+            </div>
+          </div>
       `;
     });
   }
-
-  reset();
 };
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch(
+      `https://my-brand-atlp-be.onrender.com/api/blogs/${idFromUrl}`
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const blogData = await response.json();
+    const data = blogData.data;
+    console.log(data);
+
+    //renderBlog(blogData);
+    date[0].innerHTML = formatDate(data.createdAt);
+    title[0].innerHTML = data.title;
+    content[0].innerHTML = data.content;
+    author[0].innerHTML = data.author;
+    renderComments(data);
+  } catch (error) {
+    console.error("Error fetching blog:", error);
+  }
+});
+
+// const reset = () => {
+//   userName.value = "";
+//   userEmail.value = "";
+//   userComment.value = "";
+// };
+
+//   reset();
+//};
