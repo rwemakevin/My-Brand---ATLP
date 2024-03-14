@@ -5,6 +5,7 @@ const fullName = document.getElementById("names");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const verifyPassword = document.getElementById("confirmPassword")
+const signupSuccessDiv = document.getElementById("signup-success");
 let obj = {
   name : null,
   email: null,
@@ -63,7 +64,56 @@ signupForm.addEventListener("submit", (e) => {
   e.preventDefault()
   validateInputs()
   if(checkTruthy(obj) === true){
-    alert("We are good to go!")
+    //alert("We are good to go!")
+
+    //let's do the signup process
+    const signupEndpoint = "https://my-brand-atlp-be.onrender.com/api/register";
+  
+    const userData = {
+      name: fullName.value,
+      email: email.value,
+      password: password.value,
+      verifyPassword: password.value
+    };
+
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData)
+    };
+
+    const startSignup = async () => {
+      try {
+
+        const response = await fetch(signupEndpoint, fetchOptions)
+        console.log(response)
+        if(!response.ok){
+          throw new Error('Error signing up: ' + response.statusText)
+        }
+        
+        const data = await response.json();
+        console.log(data)
+        // if(data.success){
+        //   alert("perfect")
+        // }else{
+        //   alert("things went wrong")
+        // }
+  
+      }catch(e){
+        console.log(`Something went wrong: ${e}`)
+      }
+  
+
+    }
+
+
+    startSignup()
+
+    //console.log(userData)
+
+
   }
  
   
@@ -139,7 +189,7 @@ if(verifyPasswordText == ""){
 
 
 
-const signupSuccessDiv = document.getElementById("signup-success");
+
 
 // const signupSuccess = () => {
 //   signupSuccessDiv.style.display = "block";
