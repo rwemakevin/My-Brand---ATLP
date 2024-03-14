@@ -62,14 +62,13 @@ form > p {
   border-radius: 7px;
   border: 1px solid #bebbbb;
   height: 35px;
+  display: block;
+  width: 100%;
+ 
   
 }
 
-form input[type="text"]{
-  display: block;
-  width: 100%;
-  margin-top: 5px;
-}
+
 .google-btn {
   border-radius: 7px;
   border: 1px solid #bebbbb;
@@ -114,6 +113,39 @@ label {
   color: #545454;
 
 }
+
+input {
+  transition: border 0.2s ease-in-out;
+}
+
+/* Target input field that is descedent of an element with both .field and .success */
+.field.success input {
+  border: 1px solid #09c372;
+}
+
+/* Target input field that is descedent of an element with both .field and .error */
+.field.error input {
+  border: 1px solid #ff3860;
+}
+
+/* targets class error which is descendent of class field */
+.field .error {
+  color: #ff3860;
+  
+  font-size: 10px;
+  
+  
+  padding-left: 3px;
+  
+}
+
+.password-error {
+  
+  margin-left: 10px;
+}
+
+
+
 
 @media screen and (max-width: 428px) {
   main {
