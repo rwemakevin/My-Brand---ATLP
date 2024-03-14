@@ -16,18 +16,40 @@
       src="https://kit.fontawesome.com/e7b6b86684.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./users.js" defer></script>
+    <script src="./handleSignup.js" defer></script>
   </head>
   <body>
     <main>
       <div class="container">
         <div class="form">
           <h1 class="form-title">Sign up</h1>
-          <form action="" id="signup">
-            <input type="text" id="full-name" placeholder="name" />
-            <input type="text" id="signup-email" placeholder="email" />
-            <input type="text" id="signup-password" placeholder="password" />
-            <p>Or</p>
+          <form action="" id="signupForm">
+            <div class="field">
+              <label for="names">Fullname</label>
+              <input type="text" id="names" required/>
+              <div class="error"></div>
+
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="text" id="email"  required/>
+              <div class="error"></div>
+
+            </div>
+            <div class="field">
+              <label for="password">password</label>
+              <input type="text" id="password" required/>
+              <div class="error"></div>
+
+            </div>
+            <div class="field">
+              <label for="confirmPassword">Confirm password</label>
+              <input type="text" id="confirmPassword" required/>
+              <div class="error"></div>
+
+            </div>
+            <button type="submit" class="signup-button">Sign up</button>
+            <p>OR</p>
             <div class="google-btn">
               <img class="google-icon" src="./img/google-logo.png" alt="" />
               <p>Sign in with google</p>
@@ -38,8 +60,8 @@
                 <p>Sign in with Email</p>
               </div>
             </a>
-            <button class="signup-button">Sign up</button>
-            <style></style>
+            
+            
             <div id="signup-success"></div>
           </form>
         </div>
