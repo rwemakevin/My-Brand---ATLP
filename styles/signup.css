@@ -15,7 +15,7 @@ body {
 }
 
 main {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("../img/porfolio-bg.jpg");
   background-position: center;
   background-size: cover;
@@ -23,7 +23,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .container {
@@ -31,21 +30,18 @@ main {
   background-color: rgba(0, 0, 0, 0.267);
   border-radius: 15px;
   width: 25%;
- 
 }
 
 .form {
   padding: 30px 20px;
   background-color: #fcfcfcf5;
   border-radius: 15px;
-  
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  
 }
 
 .form > h1 {
@@ -64,10 +60,7 @@ form > p {
   height: 35px;
   display: block;
   width: 100%;
- 
-  
 }
-
 
 .google-btn {
   border-radius: 7px;
@@ -111,7 +104,6 @@ label {
   font-family: "Montserrat", sans-serif;
   font-size: 0.9rem;
   color: #545454;
-
 }
 
 input {
@@ -131,21 +123,15 @@ input {
 /* targets class error which is descendent of class field */
 .field .error {
   color: #ff3860;
-  
+
   font-size: 10px;
-  
-  
+
   padding-left: 3px;
-  
 }
 
 .password-error {
-  
   margin-left: 10px;
 }
-
-
-
 
 @media screen and (max-width: 428px) {
   main {
