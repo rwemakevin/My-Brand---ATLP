@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     arg.style.backgroundColor = color;
     arg.innerHTML = text
 
+  }
+
 
     const redirect = (time, path) => {
       setTimeout(function () {
@@ -21,18 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-  const signupSuccess = () => {
-    signupSuccessDiv.style.display = "block";
-    signupSuccessDiv.style.border = "1px solid green";
-    signupSuccessDiv.style.textAlign = "center";
-    signupSuccessDiv.style.padding = "10px";
-    signupSuccessDiv.style.fontFamily = "Montserrat";
-    signupSuccessDiv.style.borderRadius = "10px";
-    signupSuccessDiv.innerHTML = "Success... Redirecting";
-    setTimeout(function () {
-      window.location = "./login.html";
-    }, 3000);
-  };
+  
 
   let obj = {
     name: null,
