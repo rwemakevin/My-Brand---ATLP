@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             throw new Error("Error signing up: " + response.statusText);
           }
-          signupMessage(signupSuccessDiv,"Success! Redirecting you to login...","#198754");
+          signupMessage(signupSuccessDiv,"Success! Now login...","#198754");
           const data = await response.json();
           redirect(5000, "./login.html")
           console.log(data);
