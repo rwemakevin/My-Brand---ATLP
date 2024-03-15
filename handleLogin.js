@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
               const startLogin = async () => {
                 try{
-                    signupMessage(signupSuccessDiv,"...processing", "#0b5ed7")
+                    signupMessage(signupSuccessDiv,"... processing", "#0b5ed7")
                     const response = await fetch(loginEndpoint, fetchOptions);
                     if(!response.ok){
                         

@@ -8,6 +8,24 @@
 
 body {
   font-size: 16px;
+  position: relative;
+}
+
+#go-home {
+  /* border: 1px solid rgb(97, 88, 88); */
+  position: absolute;
+  top: 50px;
+  border-radius: 7px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+  width: 150px;
+  padding: 10px 30px;
+  color: rgb(200, 198, 198);
+  /* background: #171c28; */
+  background-color: rgba(0, 0, 0, 0.267);
+  font-family: "Montserrat", sans-serif;
 }
 
 #signup-success {
