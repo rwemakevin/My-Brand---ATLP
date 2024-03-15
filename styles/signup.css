@@ -14,7 +14,7 @@ body {
 #go-home {
   /* border: 1px solid rgb(97, 88, 88); */
   position: absolute;
-  top: 50px;
+  top: 10px;
   border-radius: 7px;
   text-align: center;
   left: 50%;
@@ -28,11 +28,27 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+#go-home-2 {
+  /* border: 1px solid rgb(97, 88, 88); */
+  position: absolute;
+  top: 10px;
+  border-radius: 7px;
+  text-align: center;
+  left: 10px;
+
+  width: 150px;
+  padding: 10px 30px;
+  color: rgb(200, 198, 198);
+  /* background: #171c28; */
+  background-color: rgba(0, 0, 0, 0.267);
+  font-family: "Montserrat", sans-serif;
+}
+
 #signup-success {
   display: none;
-  text-align:center;
+  text-align: center;
   padding: 10px;
- color: white;
+  color: white;
   border-radius: 5px;
   font-family: "Montserrat";
 }
