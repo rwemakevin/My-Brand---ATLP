@@ -111,7 +111,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     signupMessage(signupSuccessDiv,"Success","#198754")
                     const data = await response.json()
-                    redirect(3000, "./blog.html")
+                    const token = data.token;
+                    localStorage.setItem("token", token)
+                    const decodedToken = JSON.parse(atob(token.split('.')[1]));
+                 
+                    console.log(decodedToken.role)
+                    if(decodedToken.role === "user"){
+                        redirect(3000, "./blog.html")
+                    }else if(decodedToken.role === "superadmin"){
+                        redirect(3000,"./dashboard.html")
+                    }else if(decodedToken.role === "blogger"){
+                        redirect(3000,"./blog-dashboard.html")
+                    }else{
+                        redirect(3000, "./dashboard.html")
+                    }
+                    // redirect(3000, "./blog.html")
                     
 
 
