@@ -6,15 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const verifyPassword = document.getElementById("confirmPassword");
   const signupSuccessDiv = document.getElementById("signup-success");
 
-  const signupError = () => {
-    signupSuccessDiv.style.display = "block";
-    signupSuccessDiv.style.border = "1px solid red";
-    signupSuccessDiv.style.textAlign = "center";
-    signupSuccessDiv.style.padding = "10px";
-    signupSuccessDiv.style.fontFamily = "Montserrat";
-    signupSuccessDiv.style.borderRadius = "10px";
-    signupSuccessDiv.innerHTML = "Email already exist!";
-  };
+  const signupMessage = (arg, text, color) => {
+    arg.style.display = "block";
+    arg.style.backgroundColor = color;
+    arg.innerHTML = text
+
+
+    const redirect = (time, path) => {
+      setTimeout(function () {
+        //window.location = "./login.html";
+        window.location = path;
+
+      }, time);
+    }
+
 
   const signupSuccess = () => {
     signupSuccessDiv.style.display = "block";
@@ -104,25 +109,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const startSignup = async () => {
         try {
+          signupMessage(signupSuccessDiv, "...Signing you up","#0b5ed7")
           const response = await fetch(signupEndpoint, fetchOptions);
           console.log(response);
           if (!response.ok) {
             if (response.status === 400) {
-              signupError();
+              signupMessage(signupSuccessDiv,"...Email already exist","#bb2d3b");
               email.value = "";
+              obj = {
+                name: null,
+                email: null,
+                password: null,
+                confirmPassword: null,
+              };
+
+              
             } else if (response.status === 500) {
-              signupSuccessDiv.innerHTML = `Server error`;
+              signupMessage(signupSuccessDiv,"...Server error","#bb2d3b");
             }
             throw new Error("Error signing up: " + response.statusText);
           }
-          signupSuccess();
+          signupMessage(signupSuccessDiv,"Success! Redirecting you to login...","#198754");
           const data = await response.json();
+          redirect(5000, "./login.html")
           console.log(data);
-          // if(data.success){
-          //   alert("perfect")
-          // }else{
-          //   alert("things went wrong")
-          // }
+         
         } catch (e) {
           console.log(`Something went wrong: ${e}`);
         }
@@ -130,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       startSignup();
 
-      //console.log(userData)
+  
     }
   });
 

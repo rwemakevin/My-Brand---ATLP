@@ -12,6 +12,11 @@ body {
 
 #signup-success {
   display: none;
+  text-align:center;
+  padding: 10px;
+ color: white;
+  border-radius: 5px;
+  font-family: "Montserrat";
 }
 
 main {
