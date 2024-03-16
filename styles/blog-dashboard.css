@@ -334,6 +334,18 @@ a.link {
   margin-top: 1.5rem;
 }
 
+#save-blog-toaster {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#save-blog-toaster > ul {
+  text-align: left;
+  padding: 0 0 0 20px;
+}
+
 /* for table */
 .mb {
   margin-bottom: 15px;
