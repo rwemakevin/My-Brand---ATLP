@@ -27,6 +27,12 @@ tinymce.init({
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  let cancelBtn = document.getElementsByClassName("cancel");
+  cancelBtn[0].addEventListener("click", () => {
+    waiting(loadingDiv[0], "block", form, "none", "Redirecting...");
+    window.location = "blog-dashboard.html";
+  });
+
   const showExistingData = (data) => {
     titleInput.value = data.title;
     //contentInput.value = "none";
