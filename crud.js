@@ -12,6 +12,12 @@ const toasterMessage = (div, text, color) => {
   div.innerHTML = text;
 };
 
+const editBlog = (i) => {
+  //window.location.href = `./edit-blog.html?id=${arg}`;
+  console.log(i);
+  //alert(arg);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("token")) {
     token = localStorage.getItem("token");
@@ -175,9 +181,9 @@ document.addEventListener("DOMContentLoaded", () => {
                  <a href="./read.html?id=${
                    item._id
                  }" target="_blank"><i class="fa-solid fa-eye"></i></a> 
-                  <i onClick="editBlog(${
+                  <a href = "./edit-blog.html?id=${
                     item._id
-                  })" class="fa-solid fa-pen-to-square"></i>
+                  }"><i class="fa-solid fa-pen-to-square"></i></a>
                   <i onClick="deleteBlog(${
                     item._id
                   })" class="fa-solid fa-trash"></i>
@@ -206,10 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     //   reset();
     listBlogs();
-  };
-
-  const editBlog = (arg) => {
-    window.location.href = `/edit-blog.html?id=${arg}`;
   };
 
   const clearInputs = () => {

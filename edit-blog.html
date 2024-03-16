@@ -83,12 +83,13 @@
           </div>
         </div>
         <div class="edit-blog-container">
-          <form action="" id="edit-blog-form">
+          <div class="loading"></div>
+          <form id="edit-blog-form">
             <div class="form-flex">
-              <input type="text" id="author" required />
+              <input type="text" id="author" disabled />
               <input type="text" id="title" required />
             </div>
-            <textarea name="" id="content" required></textarea>
+            <textarea id="content"></textarea>
             <div class="form-flex">
               <button type="submit">Update</button>
               <button>Abort</button>
