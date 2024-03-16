@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  //div to render blog lists
+  const blogSection = document.querySelector("section#blog-section");
+
   //Date formater
   const formatDate = (arg) => {
     const date = new Date(arg);
@@ -27,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Data fetching
   const fetchData = async () => {
     try {
+      blogSection.innerHTML = `<h2 class="empty-blog">Loading, please wait...</h2>`;
       const response = await fetch(
         "https://my-brand-atlp-be.onrender.com/api/blogs"
       );
@@ -41,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //Render Data
   const renderData = async () => {
     const data = await fetchData();
-    const blogSection = document.querySelector("section#blog-section");
 
     if (!data) {
       blogSection.innerHTML = `<h2 class="empty-blog">Nothing to show</h2>`;

@@ -3,24 +3,45 @@ const inputBlogAuthor = document.getElementById("input-blog-author");
 const inputBlogTitle = document.getElementById("input-blog-title");
 const blogContent = document.getElementById("blog-content");
 const respTable = document.getElementById("resp-table");
-let blogs = [];
+let token;
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("blogs"))
-    blogs = JSON.parse(localStorage.getItem("blogs"));
-  listBlogs();
-  console.log(localStorage.getItem("blogs"));
+  if (localStorage.getItem("token")) {
+    token = localStorage.getItem("token");
+  }
+
+  const blogsEndpoint = "https://my-brand-atlp-be.onrender.com/api/blogs";
+  const fetchOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  const getBlogs = async () => {
+    try {
+      respTable.innerHTML = `<h2 class="empty-blog">Loading, Please wait...</h2>`;
+      console.log("loading");
+      const response = await fetch(blogsEndpoint, fetchOptions);
+      const jsonResponse = await response.json();
+      const data = await jsonResponse.data;
+      console.log(data);
+      listBlogs(data);
+    } catch (e) {
+      console.error(`Error fetching Data`);
+    }
+  };
+
+  getBlogs();
 });
 
 addBlogForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const blog = {
-    id: Date.now(),
-    publishedDate: Date.now(),
     title: inputBlogTitle.value.trim(),
     author: inputBlogAuthor.value.trim(),
     content: blogContent.value.trim(),
-    comments: [],
   };
 
   saveBlog(blog);
@@ -28,15 +49,22 @@ addBlogForm.addEventListener("submit", (e) => {
 });
 
 const saveBlog = (blog) => {
-  blogs.push(blog);
-  localStorage.setItem("blogs", JSON.stringify(blogs));
+  const blogsEndpoint = "https://my-brand-atlp-be.onrender.com/api/blogs";
+  const fetchOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  };
+
   listBlogs();
   closeModal();
   clearInputs();
 };
 
-const listBlogs = () => {
-  if (localStorage.getItem("blogs") === null) {
+const listBlogs = (arg) => {
+  if (localStorage.getItem("token") === null) {
     respTable.innerHTML = `
     <li class="table-header">
       
@@ -48,35 +76,44 @@ const listBlogs = () => {
   } else {
     respTable.innerHTML = `
     <li class="table-header">
-        
+    <div class="col col-1">#</div>
         <div class="col col-2">Author</div>
         <div class="col col-3">Title</div>
         <div class="col col-4">Acton</div>
   </li>`;
-    blogs = JSON.parse(localStorage.getItem("blogs"));
-    blogs.forEach((item, index) => {
-      let longTitle = item.title;
-      let smallTitle = "";
-      if (longTitle.length < 15) {
-        smallTitle = longTitle;
-      } else {
-        for (let i = 0; i <= 15; i++) {
-          smallTitle += longTitle[i];
+
+    arg.forEach((item, index) => {
+      let newTitle = "";
+      //format Title
+      const formatTitle = (arg) => {
+        if (arg.length <= 10) {
+          return arg;
         }
 
-        smallTitle += `...`;
-      }
+        for (let i = 0; i < arg.length; i++) {
+          newTitle += arg[i];
+        }
 
-      console.log(longTitle);
-      console.log(smallTitle);
+        newTitle += "...";
+        return newTitle;
+      };
+
       respTable.innerHTML += `<li class="table-row">
-            
+      <div class="col col-1" data-label="#">${index + 1}</div>
             <div class="col col-2" data-label="Author">${item.author}</div>
-            <div class="col col-3" data-label="Title">${smallTitle}</div>
+            <div class="col col-3" data-label="Title">${formatTitle(
+              item.title
+            )}</div>
             <div class="col col-4 action-icon" data-label="Action">
-               <a href="./read.html?id=${item.id}" target="_blank"><i class="fa-solid fa-eye"></i></a> 
-                <i onClick="editBlog(${item.id})" class="fa-solid fa-pen-to-square"></i>
-                <i onClick="deleteBlog(${item.id})" class="fa-solid fa-trash"></i>
+               <a href="./read.html?id=${
+                 item._id
+               }" target="_blank"><i class="fa-solid fa-eye"></i></a> 
+                <i onClick="editBlog(${
+                  item._id
+                })" class="fa-solid fa-pen-to-square"></i>
+                <i onClick="deleteBlog(${
+                  item._id
+                })" class="fa-solid fa-trash"></i>
             </div>
         </li>`;
     });

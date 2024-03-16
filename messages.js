@@ -4,8 +4,39 @@ const senderName = document.getElementById("sender-name");
 const senderEmail = document.getElementById("sender-email");
 const senderContent = document.getElementById("sender-content");
 let success = document.getElementById("success");
-
 let form = document.getElementById("view-email");
+let token;
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("token")) {
+    token = localStorage.getItem("token");
+  }
+
+  const messagesEndpoint = "https://my-brand-atlp-be.onrender.com/api/messages";
+  const fetchOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  const getMessages = async () => {
+    try {
+      respTable.innerHTML = `<h2 class="empty-blog">Loading, Please wait...</h2>`;
+      console.log("loading");
+      const response = await fetch(messagesEndpoint, fetchOptions);
+      const jsonResponse = await response.json();
+      const data = await jsonResponse.data;
+      console.log(data);
+      listMessages(data);
+    } catch (e) {
+      console.error(`Error fetching Data`);
+    }
+  };
+
+  getMessages();
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -64,55 +95,56 @@ const reset = () => {
   submitButton.style.display = "none";
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("messages"))
-    messages = JSON.parse(localStorage.getItem("messages"));
-  listMessages();
-  console.log(messages);
-});
-
-const listMessages = () => {
-  if (localStorage.getItem("messages") === null || messages.length === 0) {
+const listMessages = (arg) => {
+  console.log(arg);
+  if (arg === null) {
+    console.log(arg);
     respTable.innerHTML = `
       <li class="table-header">
-        
+      <div class="col col-1">#</div>
         <div class="col col-2">Sender</div>
         <div class="col col-3">Messages</div>
-        <div class="col col-4">Acton</div>
+        <div class="col col-4">Action</div>
       </li>
       <h3 class="empty-blog">Mailbox Empty</h3>`;
   } else {
+    console.log(arg.length);
     respTable.innerHTML = `
       <li class="table-header">
-          
+          <div class="col col-1">#</div>
           <div class="col col-2">Sender</div>
           <div class="col col-3">Messages</div>
-          <div class="col col-4">Acton</div>
+          <div class="col col-4">Action</div>
     </li>`;
-    messages = JSON.parse(localStorage.getItem("messages"));
-    messages.forEach((item, index) => {
-      let longMessage = item.userMessageValue;
-      let smallMessage = "";
-      if (longMessage.length < 15) {
-        smallMessage = longMessage;
-      } else {
-        for (let i = 0; i <= 15; i++) {
-          smallMessage += longMessage[i];
+
+    arg.forEach((item, index) => {
+      let newTitle = "";
+      //format Title
+      const formatTitle = (x) => {
+        if (x.length <= 10) {
+          return x;
         }
 
-        smallMessage += `...`;
-      }
-      let ind = index;
+        for (let i = 0; i <= 10; i++) {
+          newTitle += x[i];
+        }
+
+        newTitle += "...";
+        return newTitle;
+      };
 
       respTable.innerHTML += `<li class="table-row">
-              <div class="col col-2" data-label="Sender">${item.userNameValue}</div>
-              <div class="col col-3" data-label="Message">${smallMessage}</div>
+      <div class="col col-1" data-label="#">${index + 1}</div>
+              <div class="col col-2" data-label="Sender">${item.fullName}</div>
+              <div class="col col-3" data-label="Message">${formatTitle(
+                item.messageContent
+              )}</div>
               <div class="col col-4 action-icon" data-label="Action">
-                 <i class="fa-solid fa-eye" onClick="showModal(${ind})"></i>
+                 <i class="fa-solid fa-eye" onClick="showModal(${index})"></i>
                  
                   
  
-                  <i  onClick="deleteMessage(${ind})" class="fa-solid fa-trash"></i>
+                  <i  onClick="deleteMessage(${index})" class="fa-solid fa-trash"></i>
                   
                   
 
