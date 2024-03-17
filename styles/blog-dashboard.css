@@ -503,6 +503,10 @@ a.link {
 #myDeleteModal {
   display: none;
 }
+
+#deleteMessageModal {
+  display: none;
+}
 .modal2 {
   /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -534,6 +538,14 @@ a.link {
   justify-content: space-between;
   gap: 20px;
   margin-bottom: 20px;
+}
+
+.notification {
+  padding: 15px;
+  display: none;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
 }
 
 .form-flex-button {

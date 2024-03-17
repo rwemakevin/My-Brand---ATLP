@@ -5,11 +5,73 @@ const senderEmail = document.getElementById("sender-email");
 const senderContent = document.getElementById("sender-content");
 let success = document.getElementById("success");
 let form = document.getElementById("view-email");
+let closeDeleteMessageModal = document.getElementById("eyo");
 let token;
+const deleteMsgForm = document.getElementById("delete-msg-form");
+let idToDelete = "";
+const notification = document.getElementsByClassName("notification");
+const handleNotification = (div, text, color) => {
+  div.style.display = "block";
+  div.innerHTML = text;
+  div.style.backgroundColor = color;
+};
+const deleteMessage = (name, email, content, id) => {
+  let emailDiv = document.getElementById("sender-email-del");
+  let nameDiv = document.getElementById("sender-name-del");
+  let contentDiv = document.getElementById("sender-content-del");
+  idToDelete = id;
+  emailDiv.value = email;
+  nameDiv.value = name;
+  contentDiv.value = content;
+  openConfirmModal();
+  console.log(idToDelete);
+};
+
+deleteMsgForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const deleteMessagesEndpoint = `https://my-brand-atlp-be.onrender.com/api/messages/${idToDelete}`;
+  const fetchOptions = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  const performDelete = async () => {
+    try {
+      handleNotification(notification[0], "Deleting... please wait", "#0b5ed7");
+      const response = await fetch(deleteMessagesEndpoint, fetchOptions);
+      if (!response.ok) {
+        handleNotification(
+          notification[0],
+          "something went wrong... Please try again later",
+          "#bb2d3b"
+        );
+        setTimeout(() => {
+          window.location = "./messages.html";
+        }, 2000);
+
+        throw new Error("Error Deleting message: " + response.statusText);
+      } else {
+        handleNotification(notification[0], "Success", "#198754");
+        setTimeout(() => {
+          window.location = "./messages.html";
+        }, 1000);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  performDelete();
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("token")) {
     token = localStorage.getItem("token");
+  } else {
+    window.location = "./login.html";
   }
 
   const messagesEndpoint = "https://my-brand-atlp-be.onrender.com/api/messages";
@@ -107,7 +169,7 @@ const reset = () => {
 
 const listMessages = (arg) => {
   console.log(arg);
-  if (arg === null) {
+  if (arg.length === 0) {
     console.log(arg);
     respTable.innerHTML = `
       <li class="table-header">
@@ -146,6 +208,7 @@ const listMessages = (arg) => {
       let name = item.fullName.toString();
       let email = item.email.toString();
       let content = item.messageContent.toString();
+      let id = item._id.toString();
       // let obj = {
       //   name: name,
       //   email: email,
@@ -163,7 +226,7 @@ const listMessages = (arg) => {
                  
                   
  
-                  <i  onClick="deleteMessage()" class="fa-solid fa-trash"></i>
+                  <i  onClick="deleteMessage('${name}','${email}','${content}','${id}')" class="fa-solid fa-trash"></i>
                   
                   
 
@@ -213,9 +276,25 @@ window.onclick = function (event) {
   }
 };
 
-const deleteMessage = (arg) => {
-  messages = JSON.parse(localStorage.getItem("messages"));
-  messages.splice(arg, 1);
-  localStorage.setItem("messages", JSON.stringify(messages));
-  listMessages();
+// Get the modal
+let deleteMessageModal = document.getElementById("deleteMessageModal");
+
+closeDeleteMessageModal.addEventListener("click", () => {
+  deleteMessageModal.style.display = "none";
+});
+
+const openConfirmModal = () => {
+  deleteMessageModal.style.display = "block";
 };
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == deleteMessageModal) {
+    deleteMessageModal.style.display = "none";
+  }
+};
+
+const resetDelMsg = document.getElementById("reset-del-message");
+resetDelMsg.addEventListener("click", () => {
+  deleteMessageModal.style.display = "none";
+});

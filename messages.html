@@ -263,6 +263,37 @@ Reply:</textarea
           </div>
         </div>
       </div>
+
+      <div id="deleteMessageModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="close-model-flex">
+            <p class="modal-title">
+              Heads up! you are about to delete this message ...
+            </p>
+            <p class="close" id="eyo">&times;</p>
+          </div>
+
+          <div class="new-blog-container">
+            <form action="" id="delete-msg-form">
+              <div class="form-flex">
+                <input disabled type="text" id="sender-name-del" />
+                <input disabled type="text" id="sender-email-del" />
+              </div>
+              <textarea
+                disabled
+                id="sender-content-del"
+                class="new-blog"
+              ></textarea>
+              <div class="form-flex">
+                <button type="submit">Delete</button>
+                <button type="reset" id="reset-del-message">Abort</button>
+              </div>
+              <div class="notification"></div>
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>

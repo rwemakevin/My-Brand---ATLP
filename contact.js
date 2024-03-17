@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } catch (e) {
         console.log(`Something went wrong: ${e}`);
-        showSuccessMessage("Failed: try again", "red");
+        showSuccessMessage(`Error ${e}`, "#bb2d3b");
       }
     };
 
