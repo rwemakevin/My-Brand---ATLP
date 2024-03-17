@@ -21,6 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
+  const refresh = document.getElementById("refresh");
+  refresh.addEventListener("click", () => {
+    getMessages();
+  });
+
   const getMessages = async () => {
     try {
       respTable.innerHTML = `<h2 class="empty-blog">Loading, Please wait...</h2>`;
@@ -43,7 +48,14 @@ form.addEventListener("submit", (e) => {
   sendEmail();
 });
 
+const handleSubmitReplyToaster = (color, text, display) => {
+  success.innerHTML = text;
+  success.style.display = display;
+  success.style.backgroundColor = color;
+};
+
 const sendEmail = () => {
+  handleSubmitReplyToaster("#0b5ed7", "Sending...", "block");
   Email.send({
     SecureToken: "2c632859-77ec-4616-8879-7f2917905917",
     To: senderEmail.value,
@@ -52,12 +64,10 @@ const sendEmail = () => {
     Body: document.getElementById("textinput").value.trim(),
   }).then((message) => {
     if (message === "OK") {
-      success.innerHTML = "Successfully Sent";
-      success.style.display = "block";
+      handleSubmitReplyToaster("#198754", "Message delivered!", "block");
       hideSuccess();
     } else {
-      success.innerHTML = "Something went wrong!";
-      success.style.display = "block";
+      handleSubmitReplyToaster("#bb2d3b", message, "block");
       hideSuccess();
     }
     console.log(message);
@@ -69,7 +79,7 @@ const hideSuccess = () => {
     success.style.display = "none";
     hideModal();
     reset();
-  }, 3000);
+  }, 5000);
 };
 
 //target the Div that has textarea to reply
@@ -133,6 +143,15 @@ const listMessages = (arg) => {
         return newTitle;
       };
 
+      let name = item.fullName.toString();
+      let email = item.email.toString();
+      let content = item.messageContent.toString();
+      // let obj = {
+      //   name: name,
+      //   email: email,
+      //   content: content,
+      // };
+
       respTable.innerHTML += `<li class="table-row">
       <div class="col col-1" data-label="#">${index + 1}</div>
               <div class="col col-2" data-label="Sender">${item.fullName}</div>
@@ -140,11 +159,11 @@ const listMessages = (arg) => {
                 item.messageContent
               )}</div>
               <div class="col col-4 action-icon" data-label="Action">
-                 <i class="fa-solid fa-eye" onClick="showModal(${index})"></i>
+                 <i class="fa-solid fa-eye" onClick="showModal('${name}','${email}','${content}')"></i>
                  
                   
  
-                  <i  onClick="deleteMessage(${index})" class="fa-solid fa-trash"></i>
+                  <i  onClick="deleteMessage()" class="fa-solid fa-trash"></i>
                   
                   
 
@@ -154,12 +173,11 @@ const listMessages = (arg) => {
   }
 };
 
-const showModal = (i) => {
+const showModal = (name, email, content) => {
+  senderName.value = name;
+  senderEmail.value = email;
+  senderContent.value = content;
   modal.style.display = "block";
-  let messageItem = messages[i];
-  senderName.value = `${messageItem.userNameValue}`;
-  senderEmail.value = `${messageItem.userEmailValue}`;
-  senderContent.value = messageItem.userMessageValue;
 };
 
 const hideModal = () => {
