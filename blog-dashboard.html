@@ -321,6 +321,35 @@ you</textarea
           </div>
         </div>
       </div>
+
+      <div id="myDeleteModal" class="modal2">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="close-model-flex">
+            <p class="modal-title">
+              Are you sure you want to delete this blog?
+            </p>
+            <p id="x" class="close">&times;</p>
+          </div>
+
+          <div class="new-blog-container">
+            <form action="" id="delete-blog-form">
+              <div class="form-flex">
+                <input type="text" id="show-id" disabled />
+                <input type="text" id="show-author" disabled />
+                <input type="text" id="show-title" disabled />
+              </div>
+
+              <div class="form-flex">
+                <button type="submit">Yes</button>
+                <button id="abort-delete" type="reset">No</button>
+              </div>
+              <div id="save-blog-toaster"></div>
+            </form>
+            <div class="delete-toaster">Delete</div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>

@@ -500,8 +500,33 @@ a.link {
   background-color: #f3f3f3;
 }
 
+#myDeleteModal {
+  display: none;
+}
+.modal2 {
+  /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  font-family: "Montserrat", sans-serif;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+
 .new-blog-container {
   padding: 20px;
+}
+
+.delete-toaster {
+  text-align: center;
+  display: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .form-flex {

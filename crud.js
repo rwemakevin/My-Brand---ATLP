@@ -6,10 +6,91 @@ const respTable = document.getElementById("resp-table");
 let saveBlogToasterDiv = document.getElementById("save-blog-toaster");
 let token;
 let username;
+let deleteModal = document.getElementById("myDeleteModal");
+
+const clearInputs = () => {
+  inputBlogTitle.value = "";
+  blogContent.value = "";
+  saveBlogToasterDiv.style.display = "none";
+};
+// Open Modal 2
+const deleteBlogForm = document.getElementById("delete-blog-form");
+const showId = document.getElementById("show-id");
+const showAuthor = document.getElementById("show-author");
+const showTitle = document.getElementById("show-title");
+const deleteToaster = document.getElementsByClassName("delete-toaster");
+function handleDelete(id, author, title) {
+  deleteModal.style.display = "block";
+  showId.value = id;
+  showAuthor.value = author;
+  showTitle.value = title;
+}
 const toasterMessage = (div, text, color) => {
   div.style.display = "block";
   div.style.backgroundColor = color;
   div.innerHTML = text;
+};
+
+// close button | modal2
+var span2 = document.getElementById("x");
+
+// function to close modal
+function closeDeleteModal() {
+  deleteModal.style.display = "none";
+}
+
+// close action | modal 2
+span2.onclick = function () {
+  closeDeleteModal();
+};
+
+deleteModal.addEventListener("click", (event) => {
+  if (event.target == deleteModal) {
+    closeDeleteModal();
+  }
+});
+
+const reset = document.getElementById("abort-delete");
+reset.addEventListener("click", () => {
+  closeDeleteModal();
+});
+
+deleteBlogForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  deleteBlog(showId.value);
+});
+
+const deleteBlog = async (arg) => {
+  //console.log(arg);
+  let id = showId.value;
+  const deleteBlogEndpoint = `https://my-brand-atlp-be.onrender.com/api/blogs/${id}`;
+  const fetchOptions = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    toasterMessage(deleteToaster[0], "Deleting...", "#0b5ed7");
+    const response = await fetch(deleteBlogEndpoint, fetchOptions);
+    if (!response.ok) {
+      toasterMessage(
+        deleteToaster[0],
+        "something went wrong... Please try again later",
+        "#bb2d3b"
+      );
+      throw new Error("Error sending message: " + response.statusText);
+    } else {
+      toasterMessage(deleteToaster[0], "Success", "#198754");
+      setTimeout(() => {
+        window.location = "./blog-dashboard.html";
+      }, 2000);
+    }
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 const editBlog = (i) => {
@@ -84,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) {
         if (response.status == "401") {
           toasterMessage(saveBlogToasterDiv, "Access Denied", "#bb2d3b");
-          console.log("unothorize");
         } else if (response.status == "500") {
           toasterMessage(saveBlogToasterDiv, "Something went wrong", "#bb2d3b");
           console.log("Internal server");
@@ -105,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         throw new Error("Error sending message: " + response.statusText);
       } else {
-        toasterMessage(saveBlogToasterDiv, "Blog Published", "green");
+        toasterMessage(saveBlogToasterDiv, "Blog Published", "#198754");
         setTimeout(function () {
           clearInputs();
           closeModal();
@@ -121,6 +201,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const listBlogs = (arg) => {
     if (localStorage.getItem("token") === null) {
+      respTable.innerHTML = `
+      <li class="table-header">
+        
+        <div class="col col-2">Author</div>
+        <div class="col col-3">Title</div>
+        <div class="col col-4">Acton</div>
+      </li>
+      <h2 class="empty-blog">Please Login to view blogs</h2>`;
+    } else if (localStorage.getItem("token") && arg.length === 0) {
+      console.log("zero");
       respTable.innerHTML = `
       <li class="table-header">
         
@@ -169,6 +259,11 @@ document.addEventListener("DOMContentLoaded", () => {
           return newAuthor;
         };
 
+        let x = item._id.toString();
+        let y = item.author.toString();
+        let z = item.title.toString();
+        console.log(x);
+
         respTable.innerHTML += `<li class="table-row">
         <div class="col col-1" data-label="#">${index + 1}</div>
               <div class="col col-2" data-label="Author">${formatAuthor(
@@ -184,41 +279,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   <a href = "./edit-blog.html?id=${
                     item._id
                   }"><i class="fa-solid fa-pen-to-square"></i></a>
-                  <i onClick="deleteBlog(${
-                    item._id
-                  })" class="fa-solid fa-trash"></i>
+                  <i   onClick= "handleDelete('${x}','${y}','${z}')" class="fa-solid fa-trash delete"></i>
               </div>
           </li>`;
       });
     }
-  };
-
-  const deleteBlog = (arg) => {
-    blogs = JSON.parse(localStorage.getItem("blogs"));
-    console.log("passed Id below");
-    console.log(arg);
-    console.log("bookmark parsed below");
-    console.log(blogs);
-    let newBlogs = blogs.filter((item) => {
-      return parseInt(item.id) !== arg;
-    });
-
-    console.log(blogs);
-
-    if (newBlogs.length < 1) {
-      localStorage.removeItem("blogs");
-    } else {
-      localStorage.setItem("blogs", JSON.stringify(newBlogs));
-    }
-    //   reset();
-    listBlogs();
-  };
-
-  const clearInputs = () => {
-    inputBlogAuthor.value = "";
-    inputBlogTitle.value = "";
-    blogContent.value = "";
-    saveBlogToasterDiv.style.display = "none";
   };
 
   const closeModal = () => {

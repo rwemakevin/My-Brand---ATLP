@@ -57,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           throw new Error("Error sending message: " + response.statusText);
+        } else {
+          showSuccessMessage("Success. Thank you!", "#198754");
         }
-
-        showSuccessMessage("Success. Thank you!", "#198754");
       } catch (e) {
         console.log(`Something went wrong: ${e}`);
         showSuccessMessage("Failed: try again", "red");
