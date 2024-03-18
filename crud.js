@@ -105,6 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const decodedToken = JSON.parse(atob(token.split(".")[1]));
     username = decodedToken.name;
     inputBlogAuthor.value = username;
+  } else {
+    window.location = "./login.html";
   }
 
   const blogsEndpoint = "https://my-brand-atlp-be.onrender.com/api/blogs";

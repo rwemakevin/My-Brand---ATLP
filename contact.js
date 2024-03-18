@@ -13,12 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
     userMessage.value = "";
     userName.value = "";
     console.log(arg);
+  }
 
+  const closeSuccessMessage = () => {
     setTimeout(function () {
       successDiv[0].style.display = "none";
       window.location = "./index.html#about";
     }, 7000);
-  }
+  };
 
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -50,19 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch(sendMessageEndpoint, fetchOptions);
         console.log(response);
         if (!response.ok) {
-          if (response.status === 500) {
-            showSuccessMessage("Fail: something went wrong", "#bb2d3b");
-          } else {
-            showSuccessMessage("Fail: something went wrong", "#bb2d3b");
-          }
-
+          showSuccessMessage("Fail: " + response.statusText, "#bb2d3b");
           throw new Error("Error sending message: " + response.statusText);
         } else {
           showSuccessMessage("Success. Thank you!", "#198754");
+          closeSuccessMessage();
         }
       } catch (e) {
         console.log(`Something went wrong: ${e}`);
-        showSuccessMessage(`Error ${e}`, "#bb2d3b");
+        showSuccessMessage(`${e}`, "#bb2d3b");
+        console.log(e);
       }
     };
 

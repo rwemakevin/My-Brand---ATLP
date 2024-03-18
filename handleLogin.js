@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
               );
               resetField(email, password);
             }
-            throw new Error("Error Loging in: " + response.statusText);
+            throw new Error("Something went wrong");
           }
 
           signupMessage(signupSuccessDiv, "Success", "#198754");
