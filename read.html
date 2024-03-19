@@ -75,24 +75,20 @@
             <div class="comment-title">
               <h1>Have a comment?</h1>
             </div>
-            <form action="" id="submit-form">
+            <form action="" id="submit-comment-form">
               <div class="comment-body">
                 <textarea required id="comment">Your comment here</textarea>
-
-                <div class="form-flex">
-                  <input
-                    required
-                    type="text"
-                    placeholder="Name"
-                    id="username"
-                  /><input
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-                <button type="submit" class="submit-comment">Submit</button>
+                <p class="to-add-comment" id="p">
+                  to add a comment, Please
+                  <a onclick="openLoginModal()">login</a>
+                </p>
+                <button
+                  type="submit"
+                  id="for-submit-comment-btn"
+                  class="submit-comment"
+                >
+                  Submit
+                </button>
               </div>
             </form>
           </div>
@@ -158,5 +154,40 @@
     <footer>
       <p>&copy 2024 - All rights reserved</p>
     </footer>
+    <div id="login-modal" class="modal2">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="form">
+          <h1 class="form-title">Login</h1>
+          <form action="" id="login-form">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="text" id="email" />
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="password">password</label>
+              <input type="text" id="password" />
+              <div class="error"></div>
+            </div>
+
+            <p>Or</p>
+            <div class="google-btn">
+              <img class="google-icon" src="./img/google-logo.png" alt="" />
+              <p>Sign in with google</p>
+            </div>
+            <div
+              id="signup-success"
+              class="animate__animated animate__fadeInUp"
+            ></div>
+            <button type="submit" class="signup-button">Log In</button>
+
+            <p class="signup-p">
+              New here? <a href="./signup.html">sign up</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
