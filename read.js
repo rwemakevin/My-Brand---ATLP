@@ -60,24 +60,27 @@ const renderComments = (arg) => {
 };
 document.addEventListener("DOMContentLoaded", async () => {
   try {
+    content[0].innerHTML = `<p class="loading">Loading...<p>`;
     const response = await fetch(
       `https://my-brand-atlp-be.onrender.com/api/blogs/${idFromUrl}`
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
-    }
-    const blogData = await response.json();
-    const data = blogData.data;
-    console.log(data);
+    } else {
+      content[0].innerHTML = "";
+      const blogData = await response.json();
+      const data = blogData.data;
 
-    //renderBlog(blogData);
-    date[0].innerHTML = formatDate(data.createdAt);
-    title[0].innerHTML = data.title;
-    content[0].innerHTML = data.content;
-    author[0].innerHTML = data.author;
-    renderComments(data);
+      date[0].innerHTML = formatDate(data.createdAt);
+      title[0].innerHTML = data.title;
+      content[0].innerHTML = data.content;
+      console.log(data.content);
+      author[0].innerHTML = data.author;
+      renderComments(data);
+    }
   } catch (error) {
     console.error("Error fetching blog:", error);
+    content[0].innerHTML = `<p class="loading">Loading...<p>`;
   }
 });
 
