@@ -1,6 +1,22 @@
+const signOut = () => {
+  localStorage.removeItem("token");
+  window.location = "./login.html";
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   //div to render blog lists
   const blogSection = document.querySelector("section#blog-section");
+
+  const loginBtn = document.querySelector(".item.login");
+  const logoutBtn = document.querySelector(".item.logout");
+
+  if (localStorage.getItem("token")) {
+    loginBtn.style.display = "none";
+    logoutBtn.style.display = "block";
+  } else {
+    logoutBtn.style.display = "none";
+    loginBtn.style.display = "block";
+  }
 
   //Date formater
   const formatDate = (arg) => {

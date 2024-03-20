@@ -11,7 +11,7 @@ let id;
 // for Blog and comments
 let submitComment = document.getElementById("submit-comment-form");
 let userComment = document.getElementById("comment");
-console.log(userComment);
+
 userComment.disabled = true;
 let urlParams = new URLSearchParams(window.location.search);
 let idFromUrl = urlParams.get("id");
@@ -21,6 +21,16 @@ let content = document.getElementsByClassName("content");
 let author = document.getElementsByClassName("author-display");
 const signP = document.getElementById("p");
 const submitCommentBtn = document.getElementById("for-submit-comment-btn");
+
+//for nav Login and signout
+const loginBtn = document.querySelector("p.login");
+const logoutBtn = document.querySelector("p.logout");
+
+//signout logic
+const signOut = () => {
+  localStorage.removeItem("token");
+  window.location = "./login.html";
+};
 
 //Regarding user and token
 if (localStorage.getItem("token")) {
@@ -34,12 +44,16 @@ if (localStorage.getItem("token")) {
   userComment.disabled = false;
   submitCommentBtn.style.display = "block";
   signP.style.display = "none";
+
+  //show logout btn
+  logoutBtn.style.display = "block";
 } else {
   //if user not signed in
   console.log(userComment);
   userComment.disabled = true;
   signP.style.display = "block";
   submitCommentBtn.style.display = "none";
+  loginBtn.style.display = "block";
 }
 
 const openLoginModal = () => {
@@ -276,61 +290,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error("Error fetching blog:", error);
     content[0].innerHTML = `<p class="loading">Loading...<p>`;
-  }
-});
-
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  validateInputs();
-  if (checkTruthy(obj) === true) {
-    const loginEndpoint = "https://my-brand-atlp-be.onrender.com/api/login";
-
-    const userData = {
-      email: email.value,
-      password: password.value,
-    };
-    const fetchOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    };
-    const startLogin = async () => {
-      try {
-        signupMessage(signupSuccessDiv, "... processing", "#0b5ed7");
-        const response = await fetch(loginEndpoint, fetchOptions);
-        if (!response.ok) {
-          if (response.status === 401) {
-            signupMessage(signupSuccessDiv, "Wrong credentials", "#bb2d3b");
-            resetField(email, password);
-          } else if (response.status === 404) {
-            signupMessage(signupSuccessDiv, "User not found", "#bb2d3b");
-            resetField(email, password);
-          } else {
-            signupMessage(
-              signupSuccessDiv,
-              "Check credentials format",
-              "#bb2d3b"
-            );
-            resetField(email, password);
-          }
-          throw new Error("Something went wrong");
-        }
-
-        signupMessage(signupSuccessDiv, "Success", "#198754");
-        const data = await response.json();
-        const token = data.token;
-        localStorage.setItem("token", token);
-        const decodedToken = JSON.parse(atob(token.split(".")[1]));
-
-        reload();
-      } catch (e) {
-        console.log(`Something went wrong: ${e}`);
-      }
-    };
-
-    startLogin();
   }
 });
 

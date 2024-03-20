@@ -467,6 +467,16 @@ input {
   font-family: "Montserrat";
 }
 
+.right p.logout,
+.right p.login {
+  font-family: "Montserrat";
+  color: white;
+  border-bottom: 2px solid white;
+  display: block;
+  cursor: pointer;
+  display: none;
+}
+
 @media screen and (max-width: 428px) {
   .container {
     width: 100%;

@@ -226,6 +226,15 @@ footer {
   padding: 20px 0;
 }
 
+.item {
+  cursor: pointer;
+}
+
+.item.login,
+.item.logout {
+  display: none;
+}
+
 @media screen and (max-width: 428px) {
   .small-nav {
     display: flex;

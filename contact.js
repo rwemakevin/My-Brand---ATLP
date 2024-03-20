@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const userEmail = document.getElementById("user-email");
   const userMessage = document.getElementById("user-message");
   const loading = document.getElementsByClassName("success");
+  const loginBtn = document.querySelector("a.login");
+  console.log(loginBtn);
+
+  if (localStorage.getItem("token")) {
+    loginBtn.style.display = "none";
+  }
   function showSuccessMessage(arg, bgColor) {
     let successDiv = document.getElementsByClassName("success");
     successDiv[0].style.backgroundColor = bgColor;
