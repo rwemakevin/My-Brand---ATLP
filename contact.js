@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const closeSuccessMessage = () => {
+    let successDiv = document.getElementsByClassName("success");
     setTimeout(function () {
       successDiv[0].style.display = "none";
       window.location = "./index.html#about";
