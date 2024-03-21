@@ -267,11 +267,11 @@ const renderComments = (arg) => {
                 <p>${formatDate(item.timestamp)}</p>
               </div>
               <p>${item.content}</p>
-              <div class="comment-foot">
+              <!-- <div class="comment-foot">
                 <i class="fa-solid fa-thumbs-up"></i>
                 <i class="fa-solid fa-thumbs-down"></i>
-                <i class="fa-solid fa-heart"></i>
-              </div>
+                 <i class="fa-solid fa-heart"></i>
+              </div> -->
             </div>
           </div>
       `;
