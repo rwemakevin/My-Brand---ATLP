@@ -4,13 +4,26 @@ const loginForm = document.getElementById("login-form");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const signupSuccessDiv = document.getElementById("signup-success");
+let numOfLikes;
 let token;
 let user;
 let id;
+let userEmail;
 
 // for Blog and comments
 let submitComment = document.getElementById("submit-comment-form");
 let userComment = document.getElementById("comment");
+
+//for liking
+const likeBtn = document.querySelector(".like-button");
+const likeBtnStatus = document.getElementById("status");
+const showNumOfLikes = document.getElementById("show-num-likes");
+console.log(likeBtnStatus);
+
+const showStatus = (text) => {
+  likeBtnStatus.style.display = "block";
+  likeBtnStatus.innerHTML = text;
+};
 
 userComment.disabled = true;
 let urlParams = new URLSearchParams(window.location.search);
@@ -40,6 +53,7 @@ if (localStorage.getItem("token")) {
   const decodedToken = JSON.parse(atob(token.split(".")[1]));
   user = decodedToken.name;
   id = decodedToken.userId.toString();
+  userEmail = decodedToken.email;
 
   userComment.disabled = false;
   submitCommentBtn.style.display = "block";
@@ -283,7 +297,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       date[0].innerHTML = formatDate(data.createdAt);
       title[0].innerHTML = data.title;
       content[0].innerHTML = data.content;
-
+      const likes = data.likes;
+      numOfLikes = likes.length;
+      showNumOfLikes.innerHTML = numOfLikes;
+      console.log(numOfLikes);
       author[0].innerHTML = data.author;
       renderComments(data);
     }
@@ -324,3 +341,69 @@ submitComment.addEventListener("submit", (e) => {
 
   addComment();
 });
+
+if (token == null) {
+  likeBtn.addEventListener("click", () => {
+    showStatus("you need to login first!");
+    setTimeout(() => {
+      likeBtnStatus.style.display = "none";
+    }, 3000);
+  });
+} else {
+  let likeData = {
+    userId: id,
+    name: user,
+    email: userEmail,
+  };
+
+  console.log(likeData);
+
+  const likeEndpoint = `https://my-brand-atlp-be.onrender.com/api/likes/${idFromUrl}`;
+  const likeEndpointOptions = {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(likeData),
+  };
+
+  const likeBlog = async () => {
+    try {
+      console.log("liking");
+      showStatus("liking...");
+      const response = await fetch(likeEndpoint, likeEndpointOptions);
+      const jsonResponse = await response.json();
+      console.log(response);
+      if (!response.ok) {
+        if (response.status == "404") {
+          showStatus("blog not found");
+          console.log("can't find blog");
+        } else if (response.status == "400") {
+          console.log("can't comment twice");
+          showStatus("You can only like a blog one time");
+          setTimeout(() => {
+            likeBtnStatus.style.display = "none";
+          }, 3000);
+        } else {
+          console.log("code: " + response.status);
+          console.log("Error");
+        }
+      } else {
+        console.log("Liked");
+        showStatus("Thank you!");
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+        console.log(jsonResponse.data.likes);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  likeBtn.addEventListener("click", () => {
+    console.log("attempt liking");
+    likeBlog();
+  });
+}

@@ -163,12 +163,17 @@ hr.devider-blog {
   background-color: rgba(238, 237, 237, 0.438);
   font-family: "Montserrat", sans-serif;
   color: #4e4e4e;
+  /* border: 2px solid green; */
 }
 
 .like-left {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.like-button {
+  cursor: pointer;
 }
 
 .like-button i {
@@ -474,6 +479,10 @@ input {
   border-bottom: 2px solid white;
   display: block;
   cursor: pointer;
+  display: none;
+}
+
+#status {
   display: none;
 }
 
