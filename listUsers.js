@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const usersEndpoint = "https://my-brand-atlp-be.onrender.com/api/users";
+  // const usersEndpoint = "http://localhost:5025/api/users";
   const fetchOptions = {
     method: "GET",
     headers: {
@@ -88,6 +89,7 @@ const listUsers = (arg) => {
     arg.forEach((item, index) => {
       const date = formatDate(item.createdAt);
       let name = item.name.toString();
+      name = name.replace(/'/g, "");
       let role = item.role.toString();
       let id = item._id.toString();
       let email = item.email.toString();
