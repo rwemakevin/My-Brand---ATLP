@@ -3,6 +3,14 @@ const signOut = () => {
   location.reload()
 }
 
+const toDashboard = () => {
+  window.location = "./dashboard.html"
+}
+
+let token;
+let decodedToken;
+let role;
+
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
   const userName = document.getElementById("user-name");
@@ -12,11 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.querySelector("a.login");
   const logoutBtn = document.getElementById("logout")
   const floatingLogout = document.getElementsByClassName("floating-logout")
+  const floatingDashboard = document.getElementsByClassName("floating-dashboard")
+  console.log(floatingDashboard[0])
   console.log(floatingLogout[0])
   console.log(logoutBtn)
   console.log(loginBtn);
 
   if (localStorage.getItem("token")) {
+    token = localStorage.getItem("token")
+    decodedToken = JSON.parse(atob(token.split(".")[1]));
+    role = decodedToken.role;
+    console.log(role)
     loginBtn.style.display = "none";
     logoutBtn.style.display = "block";
     floatingLogout[0].style.display = "block"
@@ -24,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("token")
       location.reload()
     })
+
+    if(role !== "user"){
+      floatingDashboard[0].style.display = "block"
+    }
   }
   function showSuccessMessage(arg, bgColor) {
     let successDiv = document.getElementsByClassName("success");
@@ -92,3 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // showSuccessMessage();
   });
 });
+
+
+
+

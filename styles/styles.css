@@ -442,6 +442,19 @@ footer {
   cursor: pointer;
 }
 
+.floating-dashboard {
+ display: none;
+  border: 2px solid white;
+  color: white;
+  position: fixed;
+  padding: 15px;
+  bottom: 40px;
+  right: 90px;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .floating-logout:hover {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
