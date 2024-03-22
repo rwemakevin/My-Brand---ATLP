@@ -1,6 +1,9 @@
 const countBlog = document.getElementById("count-blog")
+const countUser = document.getElementById("count-user")
+console.log(countUser)
 
 let blogCount;
+let userCount;
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -23,6 +26,26 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(e)
         }
     }
+    const getUsers =  async() => {
+        const getUserCount = "https://my-brand-atlp-be.onrender.com/api/usercount";
+
+        try {
+            countUser.innerHTML = "calculating..."
+            const response = await fetch(getUserCount)
+            if(!response.ok){
+                throw new Error("Fail to fetch")
+            }else{
+                const data = await response.json()
+                userCount = data.data
+               console.log(userCount);
+               countUser.innerHTML = userCount;
+            }
+           
+        }catch(e){
+            console.error(e)
+        }
+    }
 
     getBlogs()
+    getUsers()
 })
