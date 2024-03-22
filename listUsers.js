@@ -90,13 +90,14 @@ const listUsers = (arg) => {
       let name = item.name.toString();
       let role = item.role.toString();
       let id = item._id.toString();
+      let email = item.email.toString();
 
       usersContainer.innerHTML += `<li class="table-row">
             
         <div class="col col-2" data-label="Joined on">${date}</div>
         <div class="col col-3" data-label="Name">${item.name}</div>
         <div class="col col-4 action-icon" data-label="Action">
-           <i onClick="openViewUserModal('${id}','${name}','${role}','${date}')" class="fa-solid fa-eye"></i>
+           <i onClick="openViewUserModal('${id}','${name}','${role}','${date}','${email}')" class="fa-solid fa-eye"></i>
             <i  onClick ="openEditUserModal('${name}','${role}','${id}')" class="fa-solid fa-pen-to-square"></i>
             <i onClick="openDelModal('${name}','${role}','${id}')" class="fa-solid fa-trash"></i>
         </div>
@@ -213,10 +214,11 @@ const closeViewUserModal = () => {
   viewUserModal.style.display = "none";
 };
 
-const openViewUserModal = (id, fullName, role, date) => {
+const openViewUserModal = (id, fullName, role, date, email) => {
   viewUserModal.style.display = "block";
   document.getElementById("show-id-2").value = id;
   document.getElementById("show-the-name-2").value = fullName;
+  document.getElementById("show-the-email-2").value = email;
   document.getElementById("show-the-role-2").value = role;
   document.getElementById("show-the-date-2").value = date;
 };
