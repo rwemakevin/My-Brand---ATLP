@@ -33,6 +33,7 @@
 
     <script src="./listUsers.js" defer></script>
     <script src="./signout.js" defer></script>
+    <script src="./analytics.js" defer></script>
   </head>
   <body>
     <div class="small-nav" id="nav" onclick="toggleNavBar()">
@@ -111,7 +112,7 @@
               <img src="./img/featured/blog.png" alt="" />
               <div>
                 <p>Blogs</p>
-                <h3>128</h3>
+                <h3 id="count-blog">128</h3>
               </div>
             </div>
             <hr />
@@ -125,7 +126,7 @@
               <img src="./img/featured/users.png" alt="" />
               <div>
                 <p>Users</p>
-                <h3>55</h3>
+                <h3  id="count-user">55</h3>
               </div>
             </div>
             <hr />
@@ -138,8 +139,8 @@
             <div class="card-upper">
               <img src="./img/featured/messages.png" alt="" />
               <div>
-                <p>Comments</p>
-                <h3>238</h3>
+                <p>Messages</p>
+                <h3 id="count-message">238</h3>
               </div>
             </div>
             <hr />
