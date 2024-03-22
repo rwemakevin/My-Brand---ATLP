@@ -14,10 +14,9 @@ const goHome = document.getElementById("go-home");
 
 // go Home
 goHome.addEventListener("click", () => {
-  window.location = "./index.html"
-  console.log("Going home...")
-})
-
+  window.location = "./index.html";
+  console.log("Going home...");
+});
 
 const deleteMsgForm = document.getElementById("delete-msg-form");
 let idToDelete = "";
@@ -83,10 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("token")) {
     token = localStorage.getItem("token");
     decodedToken = JSON.parse(atob(token.split(".")[1]));
-    showUserName.innerHTML = decodedToken.name
-    showUserRole.innerHTML = `"${decodedToken.role}"`
+    showUserName.innerHTML = decodedToken.name;
+    showUserRole.innerHTML = `"${decodedToken.role}"`;
   } else {
     window.location = "./login.html";
+  }
+
+  if (decodedToken.role === "user") {
+    window.location = "./blog.html";
   }
 
   const messagesEndpoint = "https://my-brand-atlp-be.onrender.com/api/messages";
@@ -108,19 +111,18 @@ document.addEventListener("DOMContentLoaded", () => {
       respTable.innerHTML = `<h2 class="empty-blog">Loading, Please wait...</h2>`;
       console.log("loading");
       const response = await fetch(messagesEndpoint, fetchOptions);
-      if(!response.ok){
-        if(response.status == "403"){
-          respTable.innerHTML = `<h2 class="empty-blog">Access Denied</h2>`
-        }else{
-          respTable.innerHTML = `<h2 class="empty-blog">Something went wrong</h2>`
+      if (!response.ok) {
+        if (response.status == "403") {
+          respTable.innerHTML = `<h2 class="empty-blog">Access Denied</h2>`;
+        } else {
+          respTable.innerHTML = `<h2 class="empty-blog">Something went wrong</h2>`;
         }
-      }else{
-      const jsonResponse = await response.json();
-      const data = await jsonResponse.data;
-      console.log(data);
-      listMessages(data);
+      } else {
+        const jsonResponse = await response.json();
+        const data = await jsonResponse.data;
+        console.log(data);
+        listMessages(data);
       }
-      
     } catch (e) {
       console.error(`Error fetching Data`);
     }

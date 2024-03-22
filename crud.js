@@ -7,18 +7,17 @@ let saveBlogToasterDiv = document.getElementById("save-blog-toaster");
 const showUserName = document.getElementById("show-username");
 const showUserRole = document.getElementById("show-role");
 const goHome = document.getElementById("go-home");
-console.log(goHome)
+console.log(goHome);
 let token;
 let decodedToken;
 let username;
 let deleteModal = document.getElementById("myDeleteModal");
 
-
 // go Home
 goHome.addEventListener("click", () => {
-  window.location = "./index.html"
-  console.log("Going home...")
-})
+  window.location = "./index.html";
+  console.log("Going home...");
+});
 const clearInputs = () => {
   inputBlogTitle.value = "";
   blogContent.value = "";
@@ -116,11 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
     decodedToken = JSON.parse(atob(token.split(".")[1]));
     username = decodedToken.name;
     inputBlogAuthor.value = username;
-    showUserName.innerHTML = decodedToken.name
-    showUserRole.innerHTML = `"${decodedToken.role}"`
-
+    showUserName.innerHTML = decodedToken.name;
+    showUserRole.innerHTML = `"${decodedToken.role}"`;
   } else {
     window.location = "./login.html";
+  }
+
+  if (decodedToken.role === "user") {
+    window.location = "./blog.html";
   }
 
   const blogsEndpoint = "https://my-brand-atlp-be.onrender.com/api/blogs";
