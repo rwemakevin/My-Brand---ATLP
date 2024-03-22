@@ -1,9 +1,11 @@
 const countBlog = document.getElementById("count-blog")
 const countUser = document.getElementById("count-user")
-console.log(countUser)
+const countMessage = document.getElementById("count-message")
+console.log(countMessage)
 
 let blogCount;
 let userCount;
+let messageCount;
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -45,7 +47,28 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(e)
         }
     }
+    const getMessages =  async() => {
+        const getMessageCount = "https://my-brand-atlp-be.onrender.com/api/messagecount";
+
+        try {
+            countMessage.innerHTML = "calculating..."
+            const response = await fetch(getMessageCount)
+            if(!response.ok){
+                throw new Error("Fail to fetch")
+            }else{
+                const data = await response.json()
+                messageCount = data.data
+               console.log(messageCount);
+               countMessage.innerHTML = messageCount;
+            }
+           
+        }catch(e){
+            console.error(e)
+        }
+    }
+    
 
     getBlogs()
     getUsers()
+    getMessages()
 })
