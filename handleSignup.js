@@ -9,21 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupMessage = (arg, text, color) => {
     arg.style.display = "block";
     arg.style.backgroundColor = color;
-    arg.innerHTML = text
+    arg.innerHTML = text;
+  };
 
-  }
-
-
-    const redirect = (time, path) => {
-      setTimeout(function () {
-        //window.location = "./login.html";
-        window.location = path;
-
-      }, time);
-    }
-
-
-  
+  const redirect = (time, path) => {
+    setTimeout(function () {
+      //window.location = "./login.html";
+      window.location = path;
+    }, time);
+  };
 
   let obj = {
     name: null,
@@ -82,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //let's do the signup process
       const signupEndpoint =
         "https://my-brand-atlp-be.onrender.com/api/register";
+      // const signupEndpoint = "http://localhost:5025/api/register";
 
       const userData = {
         name: fullName.value,
@@ -100,12 +95,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const startSignup = async () => {
         try {
-          signupMessage(signupSuccessDiv, "...Signing you up","#0b5ed7")
+          signupMessage(signupSuccessDiv, "...Signing you up", "#0b5ed7");
           const response = await fetch(signupEndpoint, fetchOptions);
           console.log(response);
           if (!response.ok) {
             if (response.status === 400) {
-              signupMessage(signupSuccessDiv,"...Email already exist","#bb2d3b");
+              signupMessage(
+                signupSuccessDiv,
+                "...Email already exist",
+                "#bb2d3b"
+              );
               email.value = "";
               obj = {
                 name: null,
@@ -113,26 +112,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 password: null,
                 confirmPassword: null,
               };
-
-              
             } else if (response.status === 500) {
-              signupMessage(signupSuccessDiv,"...Server error","#bb2d3b");
+              signupMessage(signupSuccessDiv, "...Server error", "#bb2d3b");
             }
             throw new Error("Error signing up: " + response.statusText);
           }
-          signupMessage(signupSuccessDiv,"Success! Now login...","#198754");
+          signupMessage(signupSuccessDiv, "Success! Now login...", "#198754");
           const data = await response.json();
-          redirect(5000, "./login.html")
+          redirect(5000, "./login.html");
           console.log(data);
-         
         } catch (e) {
           console.log(`Something went wrong: ${e}`);
         }
       };
 
       startSignup();
-
-  
     }
   });
 
