@@ -442,8 +442,25 @@ footer {
   cursor: pointer;
 }
 
+.floating-logout:hover {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  transition: all 0.3s ease-in;
+}
+
+.logout-txt {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: none;
+  color: rgb(217, 255, 0);
+  position: fixed;
+  font-size: 0.9rem;
+  bottom: 15px;
+  right: 20px;
+  cursor: pointer;
+}
+
 .floating-dashboard {
- display: none;
+  display: none;
   border: 2px solid white;
   color: white;
   position: fixed;
@@ -455,10 +472,32 @@ footer {
   cursor: pointer;
 }
 
-.floating-logout:hover {
+.floating-dashboard:hover {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   transition: all 0.3s ease-in;
+}
+.dashboard-txt {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: none;
+  color: rgb(217, 255, 0);
+  position: fixed;
+  font-size: 0.9rem;
+  bottom: 15px;
+  right: 90px;
+  cursor: pointer;
+}
+
+.floating-logout:hover + .logout-txt {
+  display: block;
+}
+
+.floating-dashboard:hover + .dashboard-txt {
+  display: block;
+}
+
+.floating-dashboard:hover i {
+  color: black;
 }
 
 .floating-logout:hover i {
