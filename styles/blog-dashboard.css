@@ -834,3 +834,11 @@ p.modal-title {
     width: 95%;
   }
 }
+
+#show-role{
+  margin-top: 5px;
+  padding: 0;
+  font-size: 0.7rem;
+  font-weight: bold;
+  font-style: italic;
+}

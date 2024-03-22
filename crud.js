@@ -4,10 +4,21 @@ const inputBlogTitle = document.getElementById("input-blog-title");
 const blogContent = document.getElementById("blog-content");
 const respTable = document.getElementById("resp-table");
 let saveBlogToasterDiv = document.getElementById("save-blog-toaster");
+const showUserName = document.getElementById("show-username");
+const showUserRole = document.getElementById("show-role");
+const goHome = document.getElementById("go-home");
+console.log(goHome)
 let token;
+let decodedToken;
 let username;
 let deleteModal = document.getElementById("myDeleteModal");
 
+
+// go Home
+goHome.addEventListener("click", () => {
+  window.location = "./index.html"
+  console.log("Going home...")
+})
 const clearInputs = () => {
   inputBlogTitle.value = "";
   blogContent.value = "";
@@ -102,9 +113,12 @@ const editBlog = (i) => {
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("token")) {
     token = localStorage.getItem("token");
-    const decodedToken = JSON.parse(atob(token.split(".")[1]));
+    decodedToken = JSON.parse(atob(token.split(".")[1]));
     username = decodedToken.name;
     inputBlogAuthor.value = username;
+    showUserName.innerHTML = decodedToken.name
+    showUserRole.innerHTML = `"${decodedToken.role}"`
+
   } else {
     window.location = "./login.html";
   }

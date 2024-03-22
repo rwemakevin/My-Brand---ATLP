@@ -1,6 +1,17 @@
 //For listing users
 let token;
+let decodedToken;
 const usersContainer = document.getElementById("display");
+const showUserName = document.getElementById("show-username");
+const showUserRole = document.getElementById("show-role");
+const goHome = document.getElementById("go-home");
+console.log(showUserName)
+
+// go Home
+goHome.addEventListener("click", () => {
+  window.location = "./index.html"
+  console.log("Going home...")
+})
 
 const formatDate = (arg) => {
   const date = new Date(arg);
@@ -12,6 +23,10 @@ const formatDate = (arg) => {
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("token")) {
     token = localStorage.getItem("token");
+    decodedToken = JSON.parse(atob(token.split(".")[1]));
+    showUserName.innerHTML = decodedToken.name
+    showUserRole.innerHTML = `"${decodedToken.role}"`
+    console.log(decodedToken)
   }
 
   if (!localStorage.getItem("token")) {
@@ -32,10 +47,24 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("loading");
       usersContainer.innerHTML = `<h2 class="empty-blog">Loading, Please wait...</h2`;
       const response = await fetch(usersEndpoint, fetchOptions);
+      console.log(response)
+      if(!response.ok){
+        if(response.status == "403"){
+          usersContainer.innerHTML = `<h2 class="empty-blog">Access Denied</h2`;
+        }else{
+          usersContainer.innerHTML = `<h2 class="empty-blog">Something went wrong</h2`;
+        }
+        
+        
+       
+
+      }else{
       const jsonResponse = await response.json();
       const data = await jsonResponse.data;
       console.log(data);
       listUsers(data);
+      }
+      
     } catch (e) {
       console.error(`Error fetching Data`);
     }
@@ -56,6 +85,7 @@ const listUsers = (arg) => {
   if (arg.length === 0) {
     usersContainer.innerHTML += `<h2 class="empty-blog">No User found</h2>`;
   } else {
+    console.log(arg)
     arg.forEach((item, index) => {
       const date = formatDate(item.createdAt);
       let name = item.name.toString();
