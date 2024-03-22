@@ -1,3 +1,8 @@
+const signOut = () => {
+  localStorage.removeItem("token")
+  location.reload()
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
   const userName = document.getElementById("user-name");
@@ -5,10 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const userMessage = document.getElementById("user-message");
   const loading = document.getElementsByClassName("success");
   const loginBtn = document.querySelector("a.login");
+  const logoutBtn = document.getElementById("logout")
+  const floatingLogout = document.getElementsByClassName("floating-logout")
+  console.log(floatingLogout[0])
+  console.log(logoutBtn)
   console.log(loginBtn);
 
   if (localStorage.getItem("token")) {
     loginBtn.style.display = "none";
+    logoutBtn.style.display = "block";
+    floatingLogout[0].style.display = "block"
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("token")
+      location.reload()
+    })
   }
   function showSuccessMessage(arg, bgColor) {
     let successDiv = document.getElementsByClassName("success");
