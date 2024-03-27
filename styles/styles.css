@@ -398,6 +398,124 @@ button p {
   font-size: 0.9rem;
 }
 
+/* subscribe-modal */
+#subscribe-modal {
+  /* Hidden by default */
+  display: none;
+  position: fixed; /* Stay in place */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  font-family: "Montserrat", sans-serif;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: none; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+.modal-content {
+  margin: 10% auto 0 auto;
+  padding: 20px;
+  border-radius: 7px;
+  width: 50%;
+
+  background-color: white;
+}
+
+.close-modal {
+  float: right;
+  padding: 0 7px;
+  border-radius: 7px;
+  font-size: 2.3rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  cursor: pointer;
+}
+
+.modal-content > h1 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.modal-content > p {
+  font-size: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 10px 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.flex {
+  display: flex;
+  /* border: 1px solid red; */
+  padding: 5px 0;
+  margin-top: 0.4rem;
+}
+
+.flex > div label {
+  display: block;
+}
+
+.flex-icon {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: stretch;
+  margin-top: 5px;
+}
+
+.icon {
+  background-color: #1c2834;
+  padding: 0 7px;
+  display: grid;
+  place-items: center;
+}
+
+.icon i {
+  font-size: 0.8rem;
+  color: white;
+}
+
+.flex > div input {
+  width: 100%;
+
+  padding: 10px 5px;
+  border: 1px solid #171c28;
+  border-left: none;
+  /* border-radius: 5px; */
+  /* border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px; */
+}
+.flex > div input:focus {
+  outline: none;
+  border-color: black;
+}
+
+.sub-btn {
+  padding: 10px 5px;
+  width: 120px;
+  margin-top: 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: #1c2834;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.sub-btn:hover {
+  background-color: black;
+  transition: background-color ease 0.5s;
+}
+
+.flex > div {
+  flex: 1;
+  padding: 0 5px;
+}
+
 .contact-details {
   padding: 30px;
 }

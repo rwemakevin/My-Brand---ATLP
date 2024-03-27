@@ -1,11 +1,11 @@
 const signOut = () => {
-  localStorage.removeItem("token")
-  location.reload()
-}
+  localStorage.removeItem("token");
+  location.reload();
+};
 
 const toDashboard = () => {
-  window.location = "./dashboard.html"
-}
+  window.location = "./dashboard.html";
+};
 
 let token;
 let decodedToken;
@@ -18,29 +18,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const userMessage = document.getElementById("user-message");
   const loading = document.getElementsByClassName("success");
   const loginBtn = document.querySelector("a.login");
-  const logoutBtn = document.getElementById("logout")
-  const floatingLogout = document.getElementsByClassName("floating-logout")
-  const floatingDashboard = document.getElementsByClassName("floating-dashboard")
-  console.log(floatingDashboard[0])
-  console.log(floatingLogout[0])
-  console.log(logoutBtn)
+  const logoutBtn = document.getElementById("logout");
+  const floatingLogout = document.getElementsByClassName("floating-logout");
+  const floatingDashboard =
+    document.getElementsByClassName("floating-dashboard");
+  console.log(floatingDashboard[0]);
+  console.log(floatingLogout[0]);
+  console.log(logoutBtn);
   console.log(loginBtn);
 
   if (localStorage.getItem("token")) {
-    token = localStorage.getItem("token")
+    token = localStorage.getItem("token");
     decodedToken = JSON.parse(atob(token.split(".")[1]));
     role = decodedToken.role;
-    console.log(role)
+    console.log(role);
     loginBtn.style.display = "none";
     logoutBtn.style.display = "block";
-    floatingLogout[0].style.display = "block"
+    floatingLogout[0].style.display = "block";
     logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("token")
-      location.reload()
-    })
+      localStorage.removeItem("token");
+      location.reload();
+    });
 
-    if(role !== "user"){
-      floatingDashboard[0].style.display = "block"
+    if (role !== "user") {
+      floatingDashboard[0].style.display = "block";
     }
   }
   function showSuccessMessage(arg, bgColor) {
@@ -111,6 +112,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//subscribe
+const toggleSubModal = document.getElementById("subscribe");
+const subModal = document.getElementById("subscribe-modal");
+const closeSubModal = document.getElementById("x");
 
+const closeModal = () => {
+  subModal.style.display = "none";
+};
 
+const openModal = () => {
+  subModal.style.display = "block";
+};
 
+toggleSubModal.addEventListener("click", () => {
+  openModal();
+});
+
+closeSubModal.addEventListener("click", () => {
+  closeModal();
+});
