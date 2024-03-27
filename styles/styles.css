@@ -359,6 +359,45 @@ button p {
   margin-bottom: 2rem;
 }
 
+.subscribe {
+  padding: 5px;
+  margin-top: 0.6rem;
+  width: 70%;
+  cursor: pointer;
+}
+
+.subscribe-text:hover {
+  background-color: #171c28;
+  color: white;
+  transition: 0.3s ease-out all;
+  border: 2px solid white;
+}
+
+.subscribe-text {
+  display: flex;
+  gap: 0;
+  justify-content: space-evenly;
+  align-items: stretch;
+
+  border: 2px solid rgb(0, 0, 0);
+  background-color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.subscribe-text i {
+  padding-top: 0px;
+  font-size: 1.3rem;
+}
+
+.subscribe-text p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
 .contact-details {
   padding: 30px;
 }
