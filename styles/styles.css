@@ -417,7 +417,7 @@ button p {
   margin: 10% auto 0 auto;
   padding: 20px;
   border-radius: 7px;
-  width: 50%;
+  width: 45%;
 
   background-color: white;
 }
@@ -443,8 +443,10 @@ button p {
   margin-bottom: 2rem;
   padding: 10px 10px;
   border-radius: 5px;
+  text-align: left;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  font-size: 0.9rem;
 }
 
 .flex {
@@ -456,6 +458,7 @@ button p {
 
 .flex > div label {
   display: block;
+  font-size: 0.9rem;
 }
 
 .flex-icon {
@@ -464,6 +467,9 @@ button p {
   align-content: center;
   align-items: stretch;
   margin-top: 5px;
+  /* border: 1px solid rgb(161, 160, 160); */
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .icon {
@@ -481,8 +487,9 @@ button p {
 .flex > div input {
   width: 100%;
 
-  padding: 10px 5px;
-  border: 1px solid #171c28;
+  padding: 7px 5px;
+  /* border: 1px solid #4a4d55; */
+  border: none;
   border-left: none;
   /* border-radius: 5px; */
   /* border-top-right-radius: 5px;
@@ -500,9 +507,10 @@ button p {
   margin-left: 5px;
   border-radius: 5px;
   border: none;
+  font-size: 0.9rem;
   cursor: pointer;
   color: white;
-  background-color: #1c2834;
+  background-color: #1f53b9;
   font-family: "Nunito Sans", sans-serif;
 }
 
