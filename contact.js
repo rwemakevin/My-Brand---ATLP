@@ -9,6 +9,7 @@ const toDashboard = () => {
 
 let token;
 let decodedToken;
+
 let role;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,7 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     token = localStorage.getItem("token");
     decodedToken = JSON.parse(atob(token.split(".")[1]));
     role = decodedToken.role;
+
     console.log(role);
+    console.log(decodedToken);
     loginBtn.style.display = "none";
     logoutBtn.style.display = "block";
     floatingLogout[0].style.display = "block";
@@ -110,25 +113,121 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // showSuccessMessage();
   });
-});
 
-//subscribe
-const toggleSubModal = document.getElementById("subscribe");
-const subModal = document.getElementById("subscribe-modal");
-const closeSubModal = document.getElementById("x");
+  //subscribe
+  const subscribeForm = document.getElementById("subs-form");
+  const notYou = document.getElementsByClassName("not-you");
+  const logoutSpan = document.getElementsByClassName("logout-span");
+  const nameField = document.getElementById("full-name-sub");
+  const emailField = document.getElementById("email-sub");
+  const toggleSubModal = document.getElementById("subscribe");
+  const subModal = document.getElementById("subscribe-modal");
+  const closeSubModal = document.getElementById("x");
+  const subStatus = document.getElementsByClassName("sub-status");
+  console.log(subStatus[0]);
 
-const closeModal = () => {
-  subModal.style.display = "none";
-};
+  const showStatus = (text, color, display) => {
+    subStatus[0].style.display = display;
+    subStatus[0].style.backgroundColor = color;
+    subStatus[0].innerHTML = text;
+  };
 
-const openModal = () => {
-  subModal.style.display = "block";
-};
+  const reload = () => {
+    setTimeout(() => {
+      window.location = "./blog.html";
+    }, 5000);
+  };
+  const closeModal = () => {
+    subModal.style.display = "none";
+  };
 
-toggleSubModal.addEventListener("click", () => {
-  openModal();
-});
+  const openModal = () => {
+    subModal.style.display = "block";
+  };
 
-closeSubModal.addEventListener("click", () => {
-  closeModal();
+  toggleSubModal.addEventListener("click", () => {
+    openModal();
+  });
+
+  closeSubModal.addEventListener("click", () => {
+    closeModal();
+  });
+
+  logoutSpan[0].addEventListener("click", () => {
+    console.log("clicked");
+    localStorage.removeItem("token");
+    location.reload();
+  });
+
+  if (token) {
+    const name = decodedToken.name;
+    const email = decodedToken.email;
+    nameField.value = name;
+    emailField.value = email;
+    nameField.disabled = true;
+    emailField.disabled = true;
+
+    notYou[0].style.display = "block";
+  } else {
+    notYou[0].style.display = "none";
+  }
+
+  subscribeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const userData = {
+      fullname: nameField.value.trim(),
+      email: emailField.value.trim(),
+    };
+    console.log(userData);
+
+    //attempt adding subscriber
+    const addSubscriberEndpoint =
+      "https://my-brand-atlp-be.onrender.com/api/subscribe";
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    };
+
+    const AddSubscriber = async () => {
+      try {
+        showStatus("Saving", "#0b5ed7", "block");
+        const response = await fetch(addSubscriberEndpoint, fetchOptions);
+        if (!response.ok) {
+          console.log(response);
+          if (response.status == "409") {
+            console.log("Duplicate");
+            showStatus("Already subscribed.", "#bb2d3b", "block");
+            reload();
+          } else if (response.status == "400") {
+            console.log("Joi validation error");
+            showStatus(
+              "Validation error: Check your Inputs",
+              "#bb2d3b",
+              "block"
+            );
+          } else if (response.status == "500") {
+            console.log("Server error");
+            showStatus(
+              "Server Erro: Please Try again later",
+              "#bb2d3b",
+              "block"
+            );
+          } else {
+            console.log("Can't tell: Need to verify");
+            showStatus("Something went wrong", "#bb2d3b", "block");
+          }
+        } else {
+          showStatus("Thank you for subscribing!", "#198754", "block");
+          reload();
+        }
+      } catch (e) {
+        console.log("something went wrong: " + e);
+      }
+    };
+
+    AddSubscriber();
+  });
 });

@@ -257,37 +257,43 @@
     </div>
     <div class="dashboard-txt">Dashboard</div>
     <div id="subscribe-modal">
-      <div class="modal-content">
-        <div class="close-modal">
-          <p id="x" class="close">&times;</p>
-        </div>
+      <div class="center-modal">
+        <div class="modal-content">
+          <div class="close-modal">
+            <p id="x" class="close">&times;</p>
+          </div>
 
-        <h1>Subscribe to our NewsLetter</h1>
-        <p>
-          Stay updated with our latest news, exclusive offers, and exciting
-          updates! Subscribe to our newsletter now for all the latest delivered
-          straight to your inbox
-        </p>
-        <div class="subscribe-form">
-          <form action="">
-            <div class="flex">
-              <div>
-                <label for="full-name-sub">Fullname</label>
-                <div class="flex-icon">
-                  <div class="icon"><i class="fa-solid fa-user"></i></div>
-                  <input id="full-name-sub" required type="text" />
+          <h1>Subscribe to our NewsLetter</h1>
+          <p>
+            Stay updated with our latest news, exclusive offers, and exciting
+            updates! Subscribe to our newsletter now for all the latest
+            delivered straight to your inbox
+          </p>
+          <div class="subscribe-form">
+            <form action="" id="subs-form">
+              <div class="flex">
+                <div>
+                  <label for="full-name-sub">Fullname</label>
+                  <div class="flex-icon">
+                    <div class="icon"><i class="fa-solid fa-user"></i></div>
+                    <input id="full-name-sub" required type="text" />
+                  </div>
+                </div>
+                <div>
+                  <label for="email-sub">Email</label>
+                  <div class="flex-icon">
+                    <div class="icon"><i class="fa-solid fa-at"></i></div>
+                    <input required type="email" id="email-sub" />
+                  </div>
                 </div>
               </div>
-              <div>
-                <label for="email-sub">Email</label>
-                <div class="flex-icon">
-                  <div class="icon"><i class="fa-solid fa-at"></i></div>
-                  <input required type="email" id="email-sub" />
-                </div>
-              </div>
-            </div>
-            <button class="sub-btn" type="submit">Subscribe</button>
-          </form>
+              <p class="not-you">
+                not you? <span class="logout-span">log out</span>
+              </p>
+              <div class="sub-status">Loading</div>
+              <button class="sub-btn" type="submit">Subscribe</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

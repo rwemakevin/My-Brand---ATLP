@@ -246,7 +246,7 @@
 
   .modal-content {
     width: 100%;
-    margin: 30% 0 0 0;
+    /* margin: 30% 0 0 0; */
   }
 
   .flex {
@@ -518,7 +518,7 @@
 
   .modal-content {
     width: 100%;
-    margin: 30% 0 0 0;
+    /* margin: 30% 0 0 0; */
   }
 
   .flex {
@@ -794,8 +794,9 @@
   }
 
   .modal-content {
-    width: 80%;
-    margin: 30% auto 0 auto;
+    width: 60%;
+
+    /* margin: 30% auto 0 auto; */
   }
 
   .flex {
@@ -892,8 +893,8 @@
   }
 
   .modal-content {
-    width: 80%;
-    margin: 30% auto 0 auto;
+    width: 60%;
+    /* margin: 15% auto 0 auto; */
   }
 
   .flex {
@@ -968,9 +969,13 @@
     font-size: 0.9rem;
   }
 
+  .center-modal {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
   .modal-content {
     width: 50%;
-    margin: 20% auto 0 auto;
   }
 
   .flex {

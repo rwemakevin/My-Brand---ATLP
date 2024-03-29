@@ -413,12 +413,20 @@ button p {
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
 }
+
+.center-modal {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .modal-content {
-  margin: 10% auto 0 auto;
+  /* margin: 10% auto 0 auto; */
+
   padding: 20px;
   border-radius: 7px;
   width: 45%;
-
   background-color: white;
 }
 
@@ -449,6 +457,28 @@ button p {
   font-size: 0.9rem;
 }
 
+p.not-you {
+  font-size: 0.6rem;
+  padding-left: 0.5rem;
+}
+
+span.logout-span {
+  font-weight: bold;
+  color: rgb(17, 17, 138);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sub-status {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+  display: none;
+}
+
 .flex {
   display: flex;
   /* border: 1px solid red; */
@@ -467,7 +497,7 @@ button p {
   align-content: center;
   align-items: stretch;
   margin-top: 5px;
-  /* border: 1px solid rgb(161, 160, 160); */
+  border: 1px solid rgb(202, 200, 200);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
