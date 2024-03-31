@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const listUsers = (arg) => {
   usersContainer.innerHTML = `
   <li class="table-header">
-
+  <div class="col col-1">#</div>
   <div class="col col-2">Joined on</div>
   <div class="col col-3">Name</div>
   <div class="col col-4">Acton</div>
@@ -95,7 +95,7 @@ const listUsers = (arg) => {
       let email = item.email.toString();
 
       usersContainer.innerHTML += `<li class="table-row">
-            
+      <div class="col col-1" data-label="Joined on">${index + 1}</div>   
         <div class="col col-2" data-label="Joined on">${date}</div>
         <div class="col col-3" data-label="Name">${item.name}</div>
         <div class="col col-4 action-icon" data-label="Action">
@@ -108,19 +108,6 @@ const listUsers = (arg) => {
   }
 };
 
-// const deleteUser = (arg) => {
-//   users = JSON.parse(localStorage.getItem("users"));
-//   let newUsers = users.filter((item) => {
-//     return parseInt(item.id) !== arg;
-//   });
-
-//   if (newUsers.length === 0) {
-//     localStorage.removeItem("users");
-//   } else {
-//     localStorage.setItem("users", JSON.stringify(newUsers));
-//   }
-//   //   reset();
-// };
 const delModal = document.getElementById("myDeleteModal");
 const closeModal = () => {
   delModal.style.display = "none";

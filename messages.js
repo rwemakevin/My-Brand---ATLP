@@ -1,4 +1,3 @@
-let messages = [];
 const respTable = document.getElementById("resp-table");
 const senderName = document.getElementById("sender-name");
 const senderEmail = document.getElementById("sender-email");
@@ -92,13 +91,72 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location = "./blog.html";
   }
 
-  const messagesEndpoint = "https://my-brand-atlp-be.onrender.com/api/messages";
-  const fetchOptions = {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
+  const listMessages = (arg) => {
+    console.log(arg);
+    if (arg.length === 0) {
+      console.log("data has zero Item");
+      respTable.innerHTML = `
+        <li class="table-header">
+        <div class="col col-1">#</div>
+          <div class="col col-2">Sender</div>
+          <div class="col col-3">Messages</div>
+          <div class="col col-4">Action</div>
+        </li>
+        <h3 class="empty-blog">Mailbox Empty</h3>`;
+    } else {
+      console.log("data has more Item");
+      console.log(arg.length);
+      respTable.innerHTML = `
+        <li class="table-header">
+            <div class="col col-1">#</div>
+            <div class="col col-2">Sender</div>
+            <div class="col col-3">Messages</div>
+            <div class="col col-4">Action</div>
+      </li>`;
+      console.log(respTable);
+
+      arg.forEach((item, index) => {
+        // console.log(item);
+        // console.log(index);
+        let newTitle = "";
+        //format Title
+        const formatTitle = (x) => {
+          if (x.length <= 10) {
+            return x;
+          }
+
+          for (let i = 0; i <= 10; i++) {
+            newTitle += x[i];
+          }
+
+          newTitle += "...";
+          return newTitle;
+        };
+
+        let name = item.fullname.toString();
+        let email = item.email.toString();
+        let content = item.messageContent.toString();
+        let id = item._id.toString();
+
+        respTable.innerHTML += `<li class="table-row">
+        <div class="col col-1" data-label="#">${index + 1}</div>
+                <div class="col col-2" data-label="Sender">${name}</div>
+                <div class="col col-3" data-label="Message">${formatTitle(
+                  content
+                )}</div>
+                <div class="col col-4 action-icon" data-label="Action">
+                   <i class="fa-solid fa-eye" onClick="showModal('${name}','${email}','${content}')"></i>
+                   
+                    
+   
+                    <i  onClick="deleteMessage('${name}','${email}','${content}','${id}')" class="fa-solid fa-trash"></i>
+                    
+                    
+  
+                </div>
+            </li>`;
+      });
+    }
   };
 
   const refresh = document.getElementById("refresh");
@@ -107,24 +165,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const getMessages = async () => {
+    const messagesEndpoint =
+      "https://my-brand-atlp-be.onrender.com/api/messages";
+    const fetchOptions = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
     try {
       respTable.innerHTML = `<h2 class="empty-blog">Loading, Please wait...</h2>`;
-      console.log("loading");
+
       const response = await fetch(messagesEndpoint, fetchOptions);
-      if (!response.ok) {
+      const jsonToUse = await response.json();
+      const arrayToUse = await jsonToUse.data;
+      console.log(arrayToUse);
+      console.log(typeof arrayToUse);
+      // console.log(await response.json().data);
+      // const jsonResponse = await response.json();
+      // const data = await jsonResponse.data;
+      if (response.ok === false) {
         if (response.status == "403") {
           respTable.innerHTML = `<h2 class="empty-blog">Access Denied</h2>`;
         } else {
           respTable.innerHTML = `<h2 class="empty-blog">Something went wrong</h2>`;
         }
       } else {
-        const jsonResponse = await response.json();
-        const data = await jsonResponse.data;
-        console.log(data);
-        listMessages(data);
+        listMessages(arrayToUse);
       }
     } catch (e) {
-      console.error(`Error fetching Data`);
+      console.error(`Error fetching Data: ${e}`);
     }
   };
 
@@ -191,75 +263,6 @@ const reset = () => {
   replyContainer.style.display = "none";
   pButton.style.display = "block";
   submitButton.style.display = "none";
-};
-
-const listMessages = (arg) => {
-  console.log(arg);
-  if (arg.length === 0) {
-    console.log(arg);
-    respTable.innerHTML = `
-      <li class="table-header">
-      <div class="col col-1">#</div>
-        <div class="col col-2">Sender</div>
-        <div class="col col-3">Messages</div>
-        <div class="col col-4">Action</div>
-      </li>
-      <h3 class="empty-blog">Mailbox Empty</h3>`;
-  } else {
-    console.log(arg.length);
-    respTable.innerHTML = `
-      <li class="table-header">
-          <div class="col col-1">#</div>
-          <div class="col col-2">Sender</div>
-          <div class="col col-3">Messages</div>
-          <div class="col col-4">Action</div>
-    </li>`;
-
-    arg.forEach((item, index) => {
-      let newTitle = "";
-      //format Title
-      const formatTitle = (x) => {
-        if (x.length <= 10) {
-          return x;
-        }
-
-        for (let i = 0; i <= 10; i++) {
-          newTitle += x[i];
-        }
-
-        newTitle += "...";
-        return newTitle;
-      };
-
-      let name = item.fullName.toString();
-      let email = item.email.toString();
-      let content = item.messageContent.toString();
-      let id = item._id.toString();
-      // let obj = {
-      //   name: name,
-      //   email: email,
-      //   content: content,
-      // };
-
-      respTable.innerHTML += `<li class="table-row">
-      <div class="col col-1" data-label="#">${index + 1}</div>
-              <div class="col col-2" data-label="Sender">${item.fullName}</div>
-              <div class="col col-3" data-label="Message">${formatTitle(
-                item.messageContent
-              )}</div>
-              <div class="col col-4 action-icon" data-label="Action">
-                 <i class="fa-solid fa-eye" onClick="showModal('${name}','${email}','${content}')"></i>
-                 
-                  
- 
-                  <i  onClick="deleteMessage('${name}','${email}','${content}','${id}')" class="fa-solid fa-trash"></i>
-                  
-                  
-
-              </div>
-          </li>`;
-    });
-  }
 };
 
 const showModal = (name, email, content) => {
