@@ -540,6 +540,18 @@ a.link {
   margin-bottom: 20px;
 }
 
+.form-flex > div {
+  flex: 1;
+}
+
+#sub-status-2 {
+  border: 1px solid rgb(110, 110, 110);
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .notification {
   padding: 15px;
   display: none;
@@ -589,6 +601,21 @@ textarea.new-blog {
 #reply,
 #submit {
   display: none;
+}
+
+#edit-sub-btn {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+#update-notification {
+  display: hidden;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
 }
 
 button.btn-flex.refresh:hover {
@@ -835,7 +862,7 @@ p.modal-title {
   }
 }
 
-#show-role{
+#show-role {
   margin-top: 5px;
   padding: 0;
   font-size: 0.7rem;

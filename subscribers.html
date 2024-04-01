@@ -35,6 +35,7 @@
     <!-- <script src="./messages.js" defer></script> -->
     <script src="./signout.js" defer></script>
     <script src="./analytics.js" defer></script>
+    <script src="listSubscribers.js" defer></script>
   </head>
   <body>
     <div class="small-nav" id="nav" onclick="toggleNavBar()">
@@ -235,37 +236,99 @@
         </div>
       </div>
 
+      <!-- View Modal -->
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
           <div class="close-model-flex">
-            <p class="modal-title">Reading message ...</p>
+            <p class="modal-title">View Subcriber</p>
             <p class="close">&times;</p>
           </div>
 
           <div class="new-blog-container">
             <form action="" id="view-email">
               <div class="form-flex">
-                <input disabled type="text" id="sender-name" />
-                <input disabled type="text" id="sender-email" />
+                <div>
+                  <label for="">created At</label>
+                  <input disabled value="1" type="text" id="sub-date-1" />
+                </div>
+                <div>
+                  <label for="">Updated At</label>
+                  <input disabled value="2" type="text" id="sub-date-2" />
+                </div>
               </div>
-              <textarea
-                disabled
-                id="sender-content"
-                class="new-blog"
-                required
-              ></textarea>
-              <div id="reply">
-                <textarea id="textinput" class="new-blog" required>
-Reply:</textarea
-                >
-                <div id="success"></div>
+              <div class="form-flex">
+                <div>
+                  <label for="">ID</label>
+                  <input disabled value="3" type="text" id="sub-id" />
+                </div>
+                <div>
+                  <label for="">Email</label>
+                  <input disabled value="4" type="text" id="sub-email" />
+                </div>
               </div>
-              <div class="form-flex-button">
-                <p id="p-button" onclick="showReplySection()">Reply</p>
+              <div class="form-flex">
+                <div>
+                  <label for="">Fullname</label>
+                  <input disabled value="3" type="text" id="sub-name" />
+                </div>
+                <div>
+                  <label for="">Subscription</label>
+                  <input disabled value="4" type="text" id="sub-status" />
+                </div>
               </div>
-              <div class="form-flex-button">
-                <button id="submit" type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Modal -->
+      <div id="myEditModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="close-model-flex">
+            <p class="modal-title">Edit Subcriber</p>
+            <p class="close">&times;</p>
+          </div>
+
+          <div class="new-blog-container">
+            <form action="" id="edit-subscriber-form">
+              <div class="form-flex">
+                <div>
+                  <label for="">ID</label>
+                  <input disabled type="text" id="sub-id-2" />
+                </div>
+                <div>
+                  <label for="">Email</label>
+                  <input disabled type="text" id="sub-email-2" />
+                </div>
+              </div>
+              <div class="form-flex">
+                <div>
+                  <label for="">Fullname</label>
+                  <input disabled type="text" id="sub-name-2" />
+                </div>
+                <div>
+                  <label for="">Current status</label>
+                  <input type="text" id="current-status" disabled />
+                </div>
+              </div>
+              <div class="form-flex">
+                <div>
+                  <label for="">Change Status</label>
+
+                  <select id="sub-status-2">
+                    <option value="true">Subscribe</option>
+                    <option value="false">Unsubscribe</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-flex">
+                <div>
+                  <button id="edit-sub-btn" type="submit">Save</button>
+                </div>
+                <div id="update-notification"></div>
               </div>
             </form>
           </div>
@@ -277,7 +340,7 @@ Reply:</textarea
         <div class="modal-content">
           <div class="close-model-flex">
             <p class="modal-title">
-              Heads up! you are about to delete this message ...
+              Delete Operation: Are you sure you want to proceed ?
             </p>
             <p class="close" id="eyo">&times;</p>
           </div>
